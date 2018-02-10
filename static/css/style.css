@@ -457,7 +457,7 @@ li.dropdown.act a.w3_icons_act {
 /*-- banner-top --*/
 
 .banner-top {
-	background: url(../images/banner1.jpg) no-repeat 0px 0px;
+	background: url(../images/rent2.png) no-repeat 0px 0px;
 	background-size: cover;
 	-webkit-background-size: cover;
 	-moz-background-size: cover;
@@ -467,7 +467,7 @@ li.dropdown.act a.w3_icons_act {
 }
 
 .banner-top1 {
-	background: url(../images/banner2.jpg) no-repeat 0px 0px;
+	background: url(../images/ruumilogoo.png) no-repeat 0px 0px;
 	background-size: cover;
 	-webkit-background-size: cover;
 	-moz-background-size: cover;
@@ -477,7 +477,7 @@ li.dropdown.act a.w3_icons_act {
 }
 
 .banner-top2 {
-	background: url(../images/banner3.jpg) no-repeat 0px 0px;
+	background: url(../images/ruumilogoo.png) no-repeat 0px 0px;
 	background-size: cover;
 	-webkit-background-size: cover;
 	-moz-background-size: cover;
@@ -487,7 +487,7 @@ li.dropdown.act a.w3_icons_act {
 }
 
 .banner-top3 {
-	background: url(../images/banner4.jpg) no-repeat 0px 0px;
+	background: url(../images/rent1.png) no-repeat 0px 0px;
 	background-size: cover;
 	-webkit-background-size: cover;
 	-moz-background-size: cover;
@@ -1215,7 +1215,7 @@ color: #2fdab8;
 }
 /*-- //footer --*/
 .banner_top.innerpage {
-    background: url(../images/banner3.jpg) no-repeat 0px -221px;
+    background: url(../images/ruumilogoo.png) no-repeat 0px -221px;
     background-size: cover;
     -webkit-background-size: cover;
     -moz-background-size: cover;
@@ -1647,7 +1647,7 @@ p.head_para {
         padding: 2em 1em;
     }
     .banner_top.innerpage {
-        background: url(../images/banner3.jpg) no-repeat 0px -21px;
+        background: url(../images/ruumilogoo.png) no-repeat 0px -21px;
         background-size: cover;
         -webkit-background-size: cover;
         -moz-background-size: cover;
