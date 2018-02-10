@@ -7,6 +7,11 @@ app = Flask(__name__, static_url_path='/static')
 def hello_world():
   return 'Hello, World!'
 
+@app.route('/test/')
+# @app.route('/hello/<name>')
+def new():
+    return render_template('checkout.html')
+
 
 @app.route('/')
 # @app.route('/hello/<name>')
