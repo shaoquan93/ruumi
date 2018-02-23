@@ -47,80 +47,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 					<h1><a class="navbar-brand" href="/"><span>Downy</span> <i>Shoes</i></a></h1>
 				</div> -->
 				<div class="mobile-nav-button">
-                    <a  id="modal_trigger" href="#modal"><img src="/static/images/logo-login.png" alt="Image" height="35"></a>
-                </div>
-
-                <div id="modal" class="popupContainer" style="display:none;">
-					<header class="popupHeader">
-						<span class="header_title">Login</span>
-						<span class="modal_close"><i class="fa fa-times"></i></span>
-					</header>
-					<section class="popupBody">
-						<!-- Guest Login -->
-						<div class="user_login">
-							<div class="action_btns">
-								<div class="one_half"><a href="#" id="login_form" class="btn btn_red">Guest</a></div>
-								<div class="one_half last"><a href="#" id="register_form" class="btn">Host</a></div>
-							</div>
-							<form>
-								</br>
-
-								<label>Email Address</label>
-								<input type="email" />
-								<br />
-
-								<label>Password</label>
-								<input type="password" />
-								<br />
-
-								<div class="action_btns">
-										<div class="one_but"><a href="/guest/" class="btn">Login</a></div>
-								</div>
-							</form>
-						</div>
-						<!-- Host Login -->
-						<div class="user_register">
-							<div class="action_btns">
-								<div class="one_half"><a href="#" id="login_form" class="btn">Guest</a></div>
-								<div class="one_half last"><a href="#" id="register_form" class="btn btn_red">Host</a></div>
-							</div>
-							<form>
-								</br>
-
-								<label>Email Address</label>
-								<input type="email" />
-								<br />
-
-								<label>Password</label>
-								<input type="password" />
-								<br />
-
-								<div class="action_btns">
-									<div class="one_but"><a href="/host/" class="btn">Login</a></div>
-								</div>
-							</form>
-						</div>
-						<!-- Username & Password Login form -->
-<!-- 						<div class="user_login">
-							<form>
-								<label>Email / Username</label>
-								<input type="text" />
-								<br />
-								<label>Password</label>
-								<input type="password" />
-								<br />
-								<div class="checkbox">
-									<input id="remember" type="checkbox" />
-									<label for="remember">Remember me on this computer</label>
-								</div>
-								<div class="action_btns">
-										<div class="one_half"><a href="#" class="btn back_btn"><i class="fa fa-angle-double-left"></i> Back</a></div>
-										<div class="one_half last"><a href="#" class="btn btn_red">Login</a></div>
-								</div>
-							</form>
-							<a href="#" class="forgot_password">Forgot password?</a>
-						</div> -->
-					</section>
+					<a href=""><img src="/static/images/user.png" alt="Image" height="35"></a>
 				</div>
                 <!-- cart details -->
                 <div class="top_nav_right">
@@ -436,7 +363,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 
 			// Calling Host Form
 			$("#register_form").click(function() {
-				// alert("yay");
+				alert("yay");
 				$(".user_login").hide();
 				$(".user_register").show();
 				return false;
@@ -444,7 +371,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 
 			// Calling Guest Form
 			$("#login_form").click(function() {
-				// alert("yay");
+				alert("yay");
 				$(".user_register").hide();
 				$(".user_login").show();
 				return false;

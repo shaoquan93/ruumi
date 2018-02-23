@@ -8,7 +8,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 <html lang="zxx">
 
 <head>
-	<title>Ruumi - Checkout</title>
+	<title>Ruumi - My Account</title>
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 	<meta name="keywords" content="Downy Shoes Responsive web template, Bootstrap Web Templates, Flat Web Templates, Android Compatible web template, 
@@ -38,6 +38,30 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 	    rel="stylesheet">
 	<link href="/static/fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i,800" rel="stylesheet">
 	<script type="text/javascript" src="http://services.iperfect.net/js/IP_generalLib.js"></script>
+	<style>
+	#customers {
+	    font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
+	    border-collapse: collapse;
+	    width: 100%;
+	}
+
+	#customers td, #customers th {
+	    border: 1px solid #ddd;
+	    padding: 8px;
+	}
+
+	#customers tr:nth-child(even){background-color: #f2f2f2;}
+
+	#customers tr:hover {background-color: #ddd;}
+
+	#customers th {
+	    padding-top: 12px;
+	    padding-bottom: 12px;
+	    text-align: left;
+	    background-color: #b0c4de;
+	    color: white;
+	}
+	</style>
 
 </head>
 
@@ -49,11 +73,11 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 				<div class="mobile-nav-button">
 					<!-- <a href=""><img src="/static/images/user.png" alt="Image" height="35"></a> -->
 					<div id="hoverli">
-						<a href=""><img src="/static/images/user.png" alt="Image" height="35"></a>
-<!-- 						  	<div class="actions_menu" class="file_menu">
-								<div><a href="#file">My Account</a></div>
-								<div><a href="#file">Log Out</a></div>
-						  	</div> -->
+						<a href=""><img src="/static/images/t3.png" alt="Image" height="35"></a>
+						  	<div class="actions_menu" class="file_menu">
+								<div><a href="/myacc/">My Account</a></div>
+								<div><a href="/">Log Out</a></div>
+						  	</div>
 					</div>
 				</div>
 				<!-- cart details -->
@@ -87,11 +111,9 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 		<!-- /banner_inner -->
 		<div class="services-breadcrumb_w3ls_agileinfo">
 			<div class="inner_breadcrumb_agileits_w3">
-
 				<ul class="short">
 					<li><a href="/">Home</a><i>|</i></li>
-					<li>Space<i>|</i></li>
-					<li>Checkout</li>
+					<li>My Account</li>
 				</ul>
 			</div>
 		</div>
@@ -103,66 +125,23 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 	<div class="ads-grid_shop">
 		<div class="shop_inner_inf">
 			<div class="privacy about">
-				<h3>Pay<span>ment</span></h3>
-				<!--/tabs-->
-				<div class="responsive_tabs">
-					<div id="horizontalTab">
-						<ul class="resp-tabs-list">
-							<li>Credit/Debit</li>
-							<li>Paypal Account</li>
-						</ul>
-						<div class="resp-tabs-container">
-							<div class="tab2">
-								<div class="pay_info">
-									<form action="/done/" method="post" class="creditly-card-form agileinfo_form">
-										<section class="creditly-wrapper wthree, w3_agileits_wrapper">
-											<div class="credit-card-wrapper">
-												<div class="first-row form-group">
-													<div class="controls">
-														<label class="control-label">Name on Card</label>
-														<input class="billing-address-name form-control" type="text" name="name" placeholder="John Smith">
-													</div>
-													<div class="w3_agileits_card_number_grids">
-														<div class="w3_agileits_card_number_grid_left">
-															<div class="controls">
-																<label class="control-label">Card Number</label>
-																<input class="number credit-card-number form-control" type="text" name="number" inputmode="numeric" autocomplete="cc-number"
-																    autocompletetype="cc-number" x-autocompletetype="cc-number" placeholder="&#149;&#149;&#149;&#149; &#149;&#149;&#149;&#149; &#149;&#149;&#149;&#149; &#149;&#149;&#149;&#149;">
-															</div>
-														</div>
-														<div class="w3_agileits_card_number_grid_right">
-															<div class="controls">
-																<label class="control-label">CVV</label>
-																<input class="security-code form-control" Â· inputmode="numeric" type="text" name="security-code" placeholder="&#149;&#149;&#149;">
-															</div>
-														</div>
-														<div class="clear"> </div>
-													</div>
-													<div class="controls">
-														<label class="control-label">Expiration Date</label>
-														<input class="expiration-month-and-year form-control" type="text" name="expiration-month-and-year" placeholder="MM / YY">
-													</div>
-												</div>
-												<button><span>Make a payment </span></button>
-											</div>
-										</section>
-									</form>
-
-								</div>
-							</div>
-							<div class="tab4">
-								<div class="pay_info">
-									<div class="col-md-6 tab-grid">
-										<img class="pp-img" src="/static/images/paypal.png" alt="Image Alternative text" title="Image Title" height="100">
-										<p>Important: You will be redirected to PayPal's website to securely complete your payment.</p><br><a class="btn btn-primary">Checkout via Paypal</a>
-									</div>
-									<div class="clearfix"></div>
-								</div>
-							</div>
-						</div>
-					</div>
-				</div>
-				<!--//tabs-->
+				<h3>Upcoming rentals</h3>
+				<br>
+				<table id="customers">
+				  <tr>
+				    <th>Space</th>
+				    <th>Details</th>
+<!-- 				    <th>User</th> -->
+				  </tr>
+				  <tr>
+				    <td>Office Space In Raffles Place</td>
+				    <td>By 
+				    	<img src="/static/images/user.png" alt="Image" height="35"> Alok Singer<br>
+				    	Date: 26 February 2017<br>
+				    	Time: 15:30pm<br>
+				    	Duration: 2 Hours<br></td>
+				  </tr>
+				</table>
 			</div>
 
 		</div>
