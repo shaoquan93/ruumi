@@ -34,6 +34,35 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 	<link href="//fonts.googleapis.com/css?family=Montserrat:100i,200,200i,300,300i,400,400i,500,500i,600,600i,700,700i,800"
 	    rel="stylesheet">
 	<link href="//fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i,800" rel="stylesheet">
+	<style type="text/css">
+	/* The container <div> - needed to position the dropdown content */
+	#hoverli {
+	    position: relative;
+	    display: inline-block;
+	}
+
+	.actions_menu {
+    display: none;
+    position: absolute;
+    background-color: #f1f1f1;
+    min-width: 120px;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    z-index: 1;
+	}
+	.actions_menu a {
+    color: black;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+	}
+	/* Change color of dropdown links on hover */
+	.actions_menu a:hover {background-color: #ddd}
+
+	/* Show the dropdown menu on hover */
+	#hoverli:hover .actions_menu {
+	    display: block;
+	}
+	</style>
 </head>
 
 <body>
@@ -47,7 +76,13 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 					<h1><a class="navbar-brand" href="/"><span>Downy</span> <i>Shoes</i></a></h1>
 				</div> -->
 				<div class="mobile-nav-button">
-					<a href=""><img src="/static/images/user.png" alt="Image" height="35"></a>
+					<div id="hoverli">
+						<img src="/static/images/user.png" alt="Image" height="35">
+						  	<div class="actions_menu">
+								<a href="#">My Account</a>
+								<a href="/">Log Out</a>
+						  	</div>
+					</div>
 				</div>
                 <!-- cart details -->
 <!--                 <div class="top_nav_right">
