@@ -395,6 +395,12 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 	</script>
 
 	<script type="text/javascript" src="/static/js/bootstrap-3.1.1.min.js"></script>
+	<!-- so that wont open in safari -->
+	<script type="text/javascript">
+	$("a").click(function (event) {
+	    event.preventDefault();
+	    window.location = $(this).attr("href");
+	});
 
 
 </body>

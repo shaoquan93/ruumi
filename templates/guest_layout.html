@@ -26,87 +26,39 @@
 		<!-- font-awesome-icons -->
 		<link href="/static/css/font-awesome.css" rel="stylesheet">
 		<!-- //font-awesome-icons -->
-		<link href="/static/fonts.googleapis.com/css?family=Montserrat:100i,200,200i,300,300i,400,400i,500,500i,600,600i,700,700i,800"
-			rel="stylesheet">
-		<link href="/static/fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i,800" rel="stylesheet">
 		<script type="text/javascript" src="http://services.iperfect.net/js/IP_generalLib.js"></script>
 		<style>
-		#customers {
-			font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
-			border-collapse: collapse;
-			width: 100%;
-		}
-		#customers td, #customers th {
-			border: 1px solid #ddd;
-			padding: 8px;
-		}
-		#customers tr:nth-child(even){background-color: #f2f2f2;}
-		#customers tr:hover {background-color: #ddd;}
-		#customers th {
-			padding-top: 12px;
-			padding-bottom: 12px;
-			text-align: left;
-			background-color: #b0c4de;
-			color: white;
-		}
+		<style type="text/css">
+		/* The container <div> - needed to position the dropdown content */
 		#hoverli {
-			position: relative;
-			display: inline-block;
+		    position: relative;
+		    display: inline-block;
 		}
+
 		.actions_menu {
-		  right: 0px;
-		  display: none;
-		  position: absolute;
-		  background-color: #f1f1f1;
-		  min-width: 120px;
-		  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
-		  z-index: 1;
+		right: 0px;
+	    display: none;
+	    position: absolute;
+	    background-color: #f1f1f1;
+	    min-width: 120px;
+	    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+	    z-index: 1;
 		}
 		.actions_menu a {
-		  color: black;
-		  padding: 12px 16px;
-		  text-decoration: none;
-		  display: block;
+	    color: black;
+	    padding: 12px 16px;
+	    text-decoration: none;
+	    display: block;
 		}
 		/* Change color of dropdown links on hover */
 		.actions_menu a:hover {background-color: #ddd}
+
 		/* Show the dropdown menu on hover */
 		#hoverli:hover .actions_menu {
-			display: block;
+		    display: block;
 		}
-
-		/* start da css for da buttons */
-		.btn {
-		  border-radius: 5px;
-		  padding: 10px 25px;
-		  font-size: 22px;
-		  text-decoration: none;
-		  margin: 20px;
-		  color: #fff;
-		  position: relative;
-		  display: inline-block;
-		}
-
-		.btn:active {
-		  transform: translate(0px, 5px);
-		  -webkit-transform: translate(0px, 5px);
-		  box-shadow: 0px 1px 0px 0px;
-		}
-
-		.blue {
-		  background-color: #55acee;
-		  box-shadow: 0px 5px 0px 0px #3C93D5;
-		  float: right;
-		}
-
-		.blue:hover {
-		  background-color: #6FC6FF;
-		}
-
 		</style>
-<!-- 		<link href="https://cdnjs.cloudflare.com/ajax/libs/c3/0.4.10/c3.min.css" rel="stylesheet" />
-    	<script src="https://cdnjs.cloudflare.com/ajax/libs/d3/3.5.6/d3.min.js"></script>
-    	<script src="https://cdnjs.cloudflare.com/ajax/libs/c3/0.4.10/c3.min.js"></script> -->
+
 		{% endblock %}
   	</head>
  	<body>
@@ -115,12 +67,10 @@
 		  	<div class="wrapper_top_w3layouts">
 				<div class="header_agileits">
 			 		<div class="mobile-nav-button">
-						<div id="hoverli">
-					 		<img src="/static/images/t3.png" alt="Image" height="35">
+			 			<div id="hoverli">
+							<img src="/static/images/user.png" alt="Image" height="35">
 						  	<div class="actions_menu">
-								<a href="/myspaces/">My Spaces</a>
-								<a href="/myacc/">My Rentals</a>
-								<a href="/dashboard/">Dashboard</a>
+								<a href="#">My Account</a>
 								<a href="/">Log Out</a>
 						  	</div>
 						</div>
@@ -128,20 +78,21 @@
 				</div>
 	  		</div>
 			<!-- search -->
-			<div class="search_w3ls_agileinfo">
-				<div class="cd-main-header">
-					<ul class="cd-header-buttons">
-						<li><a class="cd-search-trigger" href="/static/#cd-search"> <span></span></a></li>
-					</ul>
-				</div>
-				<div id="cd-search" class="cd-search">
-					<form action="#" method="post">
-						<input name="Search" type="search" placeholder="Click enter after typing...">
-					</form>
-				</div>
-			</div>
-			<!-- //search -->
+            <div class="search_w3ls_agileinfo">
+                <div class="cd-main-header">
+                    <ul class="cd-header-buttons">
+                        <li><a class="cd-search-trigger" href="#cd-search"> <span></span></a></li>
+                    </ul>
+                </div>
+                <div id="cd-search" class="cd-search">
+                    <form action="#" method="post">
+                        <input name="Search" type="search" placeholder="Click enter after typing...">
+                    </form>
+                </div>
+            </div>
+            <!-- //search -->
 		  	<div class="clearfix"></div>
+		  	
 		  	<!-- banner_inner -->
 		 	<div class="services-breadcrumb_w3ls_agileinfo">
 				<div class="inner_breadcrumb_agileits_w3">

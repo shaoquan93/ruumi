@@ -395,6 +395,13 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 
 	<!-- //datepicker --> 
 	<script type="text/javascript"></script>
+	<!-- so that wont open in safari -->
+	<script type="text/javascript">
+	$("a").click(function (event) {
+	    event.preventDefault();
+	    window.location = $(this).attr("href");
+	});
+	</script>
 
 
 </body>
