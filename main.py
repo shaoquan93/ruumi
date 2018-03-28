@@ -36,6 +36,10 @@ def host_index():
 def account():
     return render_template('myacc.html')
 
+@app.route('/myspaces/')
+def myspaces():
+    return render_template('myplaces.html')
+
 @app.route('/dashboard/')
 def dashboard():
     return render_template('dashboard.html')
