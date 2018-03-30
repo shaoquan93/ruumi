@@ -2,7 +2,7 @@
 <html lang="zxx">
   	<head>
 		{% block head %}
-		<title>{% block title %}{% endblock %} - Ruumi</title>
+		<title>Ruumi - {% block title %}{% endblock %}</title>
 		<meta name="viewport" content="width=device-width, initial-scale=1">
 		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 		<script type="application/x-javascript">
@@ -72,35 +72,97 @@
 			display: block;
 		}
 
-		/* start da css for da buttons */
-		.btn {
-		  border-radius: 5px;
-		  padding: 10px 25px;
-		  font-size: 22px;
-		  text-decoration: none;
-		  margin: 20px;
-		  color: #fff;
-		  position: relative;
-		  display: inline-block;
-		}
-
-		.btn:active {
-		  transform: translate(0px, 5px);
-		  -webkit-transform: translate(0px, 5px);
-		  box-shadow: 0px 1px 0px 0px;
-		}
-
-		.blue {
-		  background-color: #55acee;
-		  box-shadow: 0px 5px 0px 0px #3C93D5;
-		  float: right;
-		}
-
-		.blue:hover {
-		  background-color: #6FC6FF;
-		}
 
 		</style>
+		{% if sub %}
+		<link href='/static/css/fullcalendar.min.css' rel='stylesheet' />
+		<link href='/static/css/fullcalendar.print.min.css' rel='stylesheet' media='print' />
+		<script src='/static/js/lib/moment.min.js'></script>
+		<script src='/static/js/lib/jquery.min.js'></script>
+		<script src='/static/js/fullcalendar.min.js'></script>
+		<script>
+		  $(document).ready(function() {
+
+		    $('#calendar').fullCalendar({
+		      header: {
+		        left: 'prev,next today',
+		        center: 'title',
+		        right: 'month,basicWeek,basicDay'
+		      },
+		      defaultDate: '2018-03-12',
+		      navLinks: true, // can click day/week names to navigate views
+		      editable: true,
+		      eventLimit: true, // allow "more" link when too many events
+		      events: [
+		        {
+		          title: 'All Day Event',
+		          start: '2018-03-01'
+		        },
+		        {
+		          title: 'Long Event',
+		          start: '2018-03-07',
+		          end: '2018-03-10'
+		        },
+		        {
+		          id: 999,
+		          title: 'Repeating Event',
+		          start: '2018-03-09T16:00:00'
+		        },
+		        {
+		          id: 999,
+		          title: 'Repeating Event',
+		          start: '2018-03-16T16:00:00'
+		        },
+		        {
+		          title: 'Conference',
+		          start: '2018-03-11',
+		          end: '2018-03-13'
+		        },
+		        {
+		          title: 'Meeting',
+		          start: '2018-03-12T10:30:00',
+		          end: '2018-03-12T12:30:00'
+		        },
+		        {
+		          title: 'Lunch',
+		          start: '2018-03-12T12:00:00',
+		          color: '#257e4a'
+		        },
+		        {
+		          title: 'Meeting',
+		          start: '2018-03-12T14:30:00'
+		        },
+		        {
+		          title: 'Happy Hour',
+		          start: '2018-03-12T17:30:00'
+		        },
+		        {
+		          title: 'Dinner',
+		          start: '2018-03-12T20:00:00'
+		        },
+		        {
+		          title: 'Birthday Party',
+		          start: '2018-03-13T07:00:00'
+		        },
+		        {
+		          title: 'Click for Google',
+		          url: 'http://google.com/',
+		          start: '2018-03-28'
+		        }
+		      ]
+		    });
+
+		  });
+
+		</script>
+		<style>
+			#calendar {
+		    max-width: 900px;
+		    margin: 0 auto;
+		  }
+		</style>
+		{% endif %}
+		
 <!-- 		<link href="https://cdnjs.cloudflare.com/ajax/libs/c3/0.4.10/c3.min.css" rel="stylesheet" />
     	<script src="https://cdnjs.cloudflare.com/ajax/libs/d3/3.5.6/d3.min.js"></script>
     	<script src="https://cdnjs.cloudflare.com/ajax/libs/c3/0.4.10/c3.min.js"></script> -->
@@ -143,8 +205,9 @@
 		 	<div class="services-breadcrumb_w3ls_agileinfo">
 				<div class="inner_breadcrumb_agileits_w3">
 				  	<ul class="short">
-						<li><a href="/host/">Home</a><i>|</i></li>
-						<li>{% block subtitle %}{% endblock %}</li>
+						<li><a href="/host/">Home</a></li>
+						<li><i>|</i>{% block subtitle %}{% endblock %}</li>
+						{% if sub %}<li><i>|</i>{% block extrasubtitle %}{% endblock %}</li>{% endif %}
 				  	</ul>
 				</div>
 		  	</div>
@@ -233,11 +296,11 @@
 		</div>
 		<!-- //footer -->
 		<a href="#home" id="toTop" class="scroll" style="display: block;"> <span id="toTopHover" style="opacity: 1;"> </span></a>
-		<script type="text/javascript" src="/static/js/jquery-2.1.4.min.js"></script>
+		{% if not sub %}<script type="text/javascript" src="/static/js/jquery-2.1.4.min.js"></script>{% endif %}
 		<!-- /nav -->
-		<script src="/static/js/modernizr-2.6.2.min.js"></script>
+<!-- 		<script src="/static/js/modernizr-2.6.2.min.js"></script>
 		<script src="/static/js/classie.js"></script>
-		<script src="/static/js/demo1.js"></script>
+		<script src="/static/js/demo1.js"></script> -->
 		<!-- //nav -->
 		<!-- single -->
 		<script src="/static/js/imagezoom.js"></script>

@@ -44,5 +44,9 @@ def myspaces():
 def dashboard():
     return render_template('dashboard.html')
 
+@app.route('/space123calendar/')
+def calendar():
+    return render_template('calendar.html', sub=True)
+
 if __name__ == '__main__':
   app.run()
