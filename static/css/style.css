@@ -467,7 +467,7 @@ li.dropdown.act a.w3_icons_act {
 }
 
 .banner-top1 {
-	background: url(../images/ruumilogoo.png) no-repeat 0px 0px;
+	background: url(../images/mainlogo.png) no-repeat 0px 0px;
 	background-size: cover;
 	-webkit-background-size: cover;
 	-moz-background-size: cover;
@@ -477,7 +477,7 @@ li.dropdown.act a.w3_icons_act {
 }
 
 .banner-top2 {
-	background: url(../images/ruumilogoo.png) no-repeat center center;
+	background: url(../images/mainlogo.png) no-repeat center center;
 	background-size: cover;
 	-webkit-background-size: cover;
 	-moz-background-size: cover;
@@ -1215,7 +1215,7 @@ color: #2fdab8;
 }
 /*-- //footer --*/
 .banner_top.innerpage {
-    background: url(../images/ruumilogoo2.png) no-repeat 0px -221px;
+    background: url(../images/innerpagelogo.png) no-repeat center center;
     background-size: cover;
     -webkit-background-size: cover;
     -moz-background-size: cover;
@@ -1497,7 +1497,7 @@ p.head_para {
 }
 @media(max-width:1024px){
     ul.short {
-        padding: 10em 0em 0 5em;
+        padding: 12em 0em 0 8em;
     }
     .footer-left h2 a {
         font-size: 0.8em;
@@ -1576,7 +1576,7 @@ p.head_para {
         top: 66px;
     }
     ul.short {
-        padding: 10em 0em 0 5em;
+        padding: 12em 0em 0 8em;
     }
 	.product-men.women_two {
 		margin: 0;
@@ -1647,7 +1647,7 @@ p.head_para {
         padding: 2em 1em;
     }
     .banner_top.innerpage {
-        background: url(../images/ruumilogoo.png) no-repeat 0px -21px;
+        background: url(../images/innerpagelogo.png) no-repeat center center;
         background-size: cover;
         -webkit-background-size: cover;
         -moz-background-size: cover;
@@ -1764,7 +1764,7 @@ p.head_para {
 }
 @media(max-width:736px){
 	ul.short {
-        padding: 10em 0em 0 3em;
+        padding: 12em 0em 0 3em;
     }
     h3.head {
       font-size: 2.5em;
@@ -1811,7 +1811,7 @@ p.head_para {
         margin-top: 24px;
     }
     ul.short {
-        padding: 8em 0em 0 2em;
+        padding: 10em 0em 0 2em;
     }
     .banner_top.innerpage {
         min-height: 185px;
@@ -2099,7 +2099,7 @@ p.head_para {
         width: 95%;
     }
     ul.short {
-        padding: 6.5em 0em 0 1em;
+        padding: 8.5em 0em 0 1em;
     }
     h3.head {
         font-size: 1.6em;
