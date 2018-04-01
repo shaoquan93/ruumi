@@ -64,6 +64,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 	#hoverli:hover .actions_menu {
 	    display: block;
 	}
+
 	</style>
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"></link>
 	<!-- js -->
@@ -75,7 +76,6 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.6.4/js/bootstrap-datepicker.js"></script>
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.6.4/css/bootstrap-datepicker.css"></link>
 	<script type="text/javascript" src="/static/js/moment.js"></script>
-
 </head>
 
 <body>
@@ -167,12 +167,59 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 							<input type="text" class="form-control">     
 							<span class="glyphicon glyphicon-calendar input-group-addon"></span>
 						</div></p> -->
-						<p style="font-size: 15px">Date: <input size="10" type="text" data-provide="datepicker" data-date-autoclose="true"; data-date-today-highlight="true"; style="border-radius:5px; border:1px solid #d3d3d3; width:200px;  background:#ededed; height:35px; padding:0 10px;" ></p>
-<!-- 						data-date-end-date="0d"; 
- --><!-- 						<p style="font-size: 15px">Date: <input size="10" type="text" name="date1" id="date1" alt="date" class="IP_calendar" title="d/m/Y" style="border-radius:5px; border:1px solid #d3d3d3; width:200px;  background:#ededed; height:35px; padding:0 10px;" ></p> -->
-<!-- 						<p>Date: <input type="text" id="datepicker"></p> -->
-						<p style="font-size: 15px">Time:  <input id="time" type="time" value="15:30" style="border-radius:5px; border:1px solid #d3d3d3; width:200px; background:#ededed; height:35px; padding:0 10px;"></p>
-						<p style="font-size: 15px">Duration: <input id="duration" type="text" value="1" style="border-radius:5px; border:1px solid #d3d3d3; width:170px; background:#ededed; height:35px; padding:0 10px;"></p>
+<!-- 
+						<p style="font-size: 15px">Date: <input size="10" type="text" class="datepicker"  style="border-radius:5px; border:1px solid #d3d3d3; width:200px;  background:#ededed; height:35px; padding:0 10px;"></p> -->
+						<p style="font-size: 15px">Date: 
+							<input size="10" type="text" data-provide="datepicker" data-date-autoclose="true" data-date-today-highlight="true"  data-date-start-date="today" data-date-format="mm/dd/yyyy" data-date-dates-disabled= ["04/06/2018","04/07/2018"]
+							style="border-radius:5px; border:1px solid #d3d3d3; width:200px;  background:#ededed; height:35px; padding:0 10px;" >
+						</p>
+<!-- 						<div class="actions_menu">
+								<a href="#">My Account</a>
+								<a href="/">Log Out</a>
+						  	</div> -->
+						<p style="font-size: 15px">Start Time:  
+							<select id="time" type="time" style="border-radius:5px; border:1px solid #d3d3d3; width:200px; background:#ededed; height:35px; padding:0 10px;">
+								<option disabled selected value></option>
+								<option value="12:00pm">12:00pm</option>
+							    <option value="12:30pm">12:30pm</option>
+							    <option value="12:00pm">1:00pm</option>
+							    <option value="12:30pm">1:30pm</option>
+							    <option value="12:00pm">2:00pm</option>
+							    <option value="12:30pm">2:30pm</option>
+							    <option value="12:00pm">3:00pm</option>
+							    <option value="12:30pm">3:30pm</option>
+							    <option value="12:00pm">4:00pm</option>
+							    <option value="12:30pm">4:30pm</option>
+							    <option value="12:00pm">5:00pm</option>
+							    <option value="12:30pm">5:30pm</option>
+							    <option value="12:00pm">6:00pm</option>
+							    <option value="12:30pm">6:30pm</option>
+							    <option value="12:00pm">7:00pm</option>
+							    <option value="12:30pm">7:30pm</option>
+							    <option value="12:00pm">8:00pm</option>
+							    <option value="12:30pm">8:30pm</option>
+							    <option value="12:00pm">9:00pm</option>
+							    <option value="12:30pm">9:30pm</option>
+							</select>
+						</p>
+						<p style="font-size: 15px">End Time:  
+							<select id="time" type="time" style="border-radius:5px; border:1px solid #d3d3d3; width:200px; background:#ededed; height:35px; padding:0 10px;">
+								<option disabled selected value></option>
+							    <option value="12:00pm">4:00pm</option>
+							    <option value="12:30pm">4:30pm</option>
+							    <option value="12:00pm">5:00pm</option>
+							    <option value="12:30pm">5:30pm</option>
+							    <option value="12:00pm">6:00pm</option>
+							    <option value="12:30pm">6:30pm</option>
+							    <option value="12:00pm">7:00pm</option>
+							    <option value="12:30pm">7:30pm</option>
+							    <option value="12:00pm">8:00pm</option>
+							    <option value="12:30pm">8:30pm</option>
+							    <option value="12:00pm">9:00pm</option>
+							    <option value="12:30pm">9:30pm</option>
+							</select>
+						</p>
+<!-- 						<p style="font-size: 15px">Duration: <input id="duration" type="text" value="1" style="border-radius:5px; border:1px solid #d3d3d3; width:170px; background:#ededed; height:35px; padding:0 10px;"></p> -->
 					</form>
 				</div>
 				<br>
