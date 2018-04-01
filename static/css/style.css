@@ -1341,7 +1341,13 @@ p.head_para {
     border: none;
     text-indent: 100%;
     background: url(../images/move-top.png) no-repeat 0px 0px;
-}
+	}
+
+/*	.powerbi {
+    	width:100%; 
+    	height:1200px;
+    }*/
+
     /*--responsive--*/
 @media(max-width:1680px){
 	.style-image-1_info {
@@ -1351,6 +1357,10 @@ p.head_para {
     .cd-header-buttons {
         top: 47px;
         right: 173px;
+    }
+    .powerbi {
+    	width:100%; 
+    	height:1000px;
     }
 }
 @media(max-width:1600px){
@@ -1453,6 +1463,11 @@ p.head_para {
     .banner-info-wthree    h3 {
         font-size: 9em;
     }
+
+    .powerbi {
+    	width:100%; 
+    	height:710px;
+    }
 }
 @media(max-width:1080px){
 	.cd-header-buttons {
@@ -1468,6 +1483,10 @@ p.head_para {
     }
     .newsletter_w3layouts_agile {
         padding: 3em 4em;
+    }
+    .powerbi {
+    	width:100%; 
+    	height:575px;
     }
 }
 @media(max-width:1050px){
@@ -1756,6 +1775,11 @@ p.head_para {
         width: 100%;
         margin-bottom: 10px;
     }
+
+    .powerbi {
+    	width:100%; 
+    	height:445px;
+    }
 }
 @media(max-width:767px){
 	.single-right-left h3 {
@@ -1956,6 +1980,10 @@ p.head_para {
     .callbacks_tabs {
         bottom: 16%;
         left: 37%;
+    }
+    .powerbi {
+    	width:100%; 
+    	height:325px;
     }
 }
 @media(max-width:414px){
@@ -2172,6 +2200,10 @@ p.head_para {
     #staplesbmincart .sbmincart-details-quantity {
         float: left;
         width: 17%;
+    }
+    .powerbi {
+    	width:100%; 
+    	height:305px;
     }
 
 }

@@ -32,7 +32,7 @@ def done():
 def host_index():
     return render_template('host_index.html')
 
-@app.route('/myacc/')
+@app.route('/myrentals/')
 def account():
     return render_template('myacc.html')
 

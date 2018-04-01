@@ -81,85 +81,156 @@
 		<script src='/static/js/lib/jquery.min.js'></script>
 		<script src='/static/js/fullcalendar.min.js'></script>
 		<script>
-		  $(document).ready(function() {
+		var today = moment().day();
+	  	$(document).ready(function() {
+	    	$('#calendar').fullCalendar({
+	      		header: {
+	        		left: 'prev,next today',
+	        		center: 'title',
+	        		right: 'agendaWeek,agendaDay,listWeek'
+	      		},
+		      	defaultView: 'agendaWeek',
+		      	firstDay: today,
+		      	// defaultDate: '2018-04-01',
+		      	navLinks: true, // can click day/week names to navigate views
+		      	editable: false,
+		      	eventLimit: true, // allow "more" link when too many events
+		      	minTime: "07:00:00",
+        		maxTime: "22:00:00",
+        		allDaySlot: false,
+        		timeFormat: 'hh:mm a',
+        		droppable:false,
+        		viewDisplay: function(view){
+			        $('.fc-day').filter(
+			          function(index){
+			          return moment( $(this).data('date') ).isBefore(moment(),'day') 
+			        }).addClass('fc-other-month');
+			    },  
+		     	events: [
+		        {
+		          	title: 'All Day Event',
+		          	start: '2018-04-01T07:00:00',
+		          	end: '2018-04-01T22:00:00',
+		          	overlap: false,
+		          	// color: '#708090',
+		        },
+		        {	//available for rent
+		        	title: 'Rented by Janet Tan',
+		          	start: '2018-04-02T12:00:00',
+		          	end: '2018-04-02T17:00:00',
+		          	color: '#257e4a',
+		        },
+		        {
+		        	id: 1,
+		          	title: 'Rent It Out',
+		          	start: '2018-04-06T07:00:00',
+		          	end: '2018-04-06T08:00:00',
+		          	color: '#BE2625',
+		          	editable: true
+		        },
+		        {
+		          	title: 'Sentosa Outing',
+		          	start: '2018-04-06T08:00:00',
+		          	end: '2018-04-06T15:30:00',
+		          	overlap: false,
+		          	// color: '#708090',
+		        },
+		        {
+		        	id: 123,
+		          	title: 'Rent It Out',
+		          	start: '2018-04-06T15:30:00',
+		          	end: '2018-04-06T22:00:00',
+		          	color: '#BE2625',
+		          	editable: true
+		        },
+		        {	//available for rent
+		          	start: moment(),
+		          	end: '2018-04-04T22:00:00',
+		          	color: '#257e4a',
+		          	rendering: 'background',
+		        },
+		        {	//robin rental
+		          	title: 'Rented by Robin Lee',
+		          	start: '2018-04-05T07:00:00',
+		          	end: '2018-04-05T12:00:00',
+		          	overlap: false,
+		          	color: "#257e4a",
+		        },
+		        {	//alok rental
+		          	title: 'Rented by Alok Singer',
+		          	start: '2018-04-05T15:30:00',
+		          	end: '2018-04-05T16:30:00',
+		          	overlap: false,
+		          	color: "#257e4a",
+		        },
+		        {	//available for rent
+		          	start: '2018-04-05T12:00:00',
+		          	end: '2018-04-05T22:00:00',
+		          	color: '#257e4a',
+		          	rendering: 'background',
+		        },
+		        {
+		          	title: 'All Day Event',
+		          	start: '2018-04-03T07:00:00',
+		          	end: '2018-04-03T22:00:00',
+		          	overlap: false,
+		          	// color: '#708090',
+		        },
+		        {	//rent it out
+		        	id: 124,
+		        	title: 'Rent It Out',
+		          	start: '2018-04-07T07:00:00',
+		          	end: '2018-04-07T18:00:00',
+		          	color: '#BE2625',
+		          	resize: true,
+		          	editable: true,
+		      //     	constraint: {
+		      //     		start:'2018-04-07T07:00:00',
+        				
+    				// }
+		        },
+		        {
+		          	title: 'Skype Conference Meeting',
+		          	start: '2018-04-07T18:00:00',
+		          	end: '2018-04-07T22:00:00',
+		          	overlap: false,
+		          	// color: '#708090',
+		        },
+		      	],
+		      	eventClick: function(event, element) {
+		      		if (event.color == '#BE2625') { //available for rent
+		      			alert(moment());
+		      			if (confirm('Make it available for rent?')) {
+			      			event.color = "#257e4a";
+			      			event.rendering = 'background';
+			      			$('#calendar').fullCalendar('updateEvent', event);
+			      			if (event.id == 124 && (event.end.isBefore(moment.utc('2018-04-07T18:00:00')))) { //if it's the saturday event 
+				      			var event = {
+				      				id:125,
+				      				title: 'Rent It Out',
+				      				start:event.end,
+				      				end:'2018-04-07T18:00:00',
+				      				color:'#BE2625'
+				      			};
+			      				$('#calendar').fullCalendar( 'renderEvent', event, true);
+			      			}
+		      			}
+		      		}
+		    	}
+			});
 
-		    $('#calendar').fullCalendar({
-		      header: {
-		        left: 'prev,next today',
-		        center: 'title',
-		        right: 'month,basicWeek,basicDay'
-		      },
-		      defaultDate: '2018-03-12',
-		      navLinks: true, // can click day/week names to navigate views
-		      editable: true,
-		      eventLimit: true, // allow "more" link when too many events
-		      events: [
-		        {
-		          title: 'All Day Event',
-		          start: '2018-03-01'
-		        },
-		        {
-		          title: 'Long Event',
-		          start: '2018-03-07',
-		          end: '2018-03-10'
-		        },
-		        {
-		          id: 999,
-		          title: 'Repeating Event',
-		          start: '2018-03-09T16:00:00'
-		        },
-		        {
-		          id: 999,
-		          title: 'Repeating Event',
-		          start: '2018-03-16T16:00:00'
-		        },
-		        {
-		          title: 'Conference',
-		          start: '2018-03-11',
-		          end: '2018-03-13'
-		        },
-		        {
-		          title: 'Meeting',
-		          start: '2018-03-12T10:30:00',
-		          end: '2018-03-12T12:30:00'
-		        },
-		        {
-		          title: 'Lunch',
-		          start: '2018-03-12T12:00:00',
-		          color: '#257e4a'
-		        },
-		        {
-		          title: 'Meeting',
-		          start: '2018-03-12T14:30:00'
-		        },
-		        {
-		          title: 'Happy Hour',
-		          start: '2018-03-12T17:30:00'
-		        },
-		        {
-		          title: 'Dinner',
-		          start: '2018-03-12T20:00:00'
-		        },
-		        {
-		          title: 'Birthday Party',
-		          start: '2018-03-13T07:00:00'
-		        },
-		        {
-		          title: 'Click for Google',
-		          url: 'http://google.com/',
-		          start: '2018-03-28'
-		        }
-		      ]
-		    });
-
-		  });
+		});
 
 		</script>
 		<style>
 			#calendar {
-		    max-width: 900px;
-		    margin: 0 auto;
-		  }
+		    	max-width: 900px;
+		   		margin: 0 auto;
+		  	}
+		  	.fc-content .fc-time span {
+		  		font-size: 1.2em;
+			};
+
 		</style>
 		{% endif %}
 		
@@ -177,8 +248,8 @@
 						<div id="hoverli">
 					 		<img src="/static/images/t3.png" alt="Image" height="35">
 						  	<div class="actions_menu">
+						  		<a href="/myrentals/">My Rentals</a>
 								<a href="/myspaces/">My Spaces</a>
-								<a href="/myacc/">My Rentals</a>
 								<a href="/dashboard/">Dashboard</a>
 								<a href="/">Log Out</a>
 						  	</div>
@@ -297,11 +368,6 @@
 		<!-- //footer -->
 		<a href="#home" id="toTop" class="scroll" style="display: block;"> <span id="toTopHover" style="opacity: 1;"> </span></a>
 		{% if not sub %}<script type="text/javascript" src="/static/js/jquery-2.1.4.min.js"></script>{% endif %}
-		<!-- /nav -->
-<!-- 		<script src="/static/js/modernizr-2.6.2.min.js"></script>
-		<script src="/static/js/classie.js"></script>
-		<script src="/static/js/demo1.js"></script> -->
-		<!-- //nav -->
 		<!-- single -->
 		<script src="/static/js/imagezoom.js"></script>
 		<!-- single -->
