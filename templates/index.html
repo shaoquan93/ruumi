@@ -73,8 +73,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 							</div>
 							<form>
 								</br>
-
-								<label>Email Address</label>
+								<label>Username</label>
 								<input type="email" />
 								<br />
 
@@ -96,7 +95,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 							<form>
 								</br>
 
-								<label>Email Address</label>
+								<label>Username</label>
 								<input type="email" />
 								<br />
 
@@ -317,7 +316,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 <!-- 	<script src="/static/js/demo1.js"></script>
  -->	<!-- //nav -->
 	<!-- cart-js -->
-	<script src="/static/js/minicart.js"></script>
+<!-- 	<script src="/static/js/minicart.js"></script>
 	<script>
 		shoe.render();
 
@@ -330,7 +329,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 				for (i = 0, len = items.length; i < len; i++) {}
 			}
 		});
-	</script>
+	</script> -->
 	<!-- //cart-js -->
 	<!--search-bar-->
 	<script src="/static/js/search.js"></script>
@@ -379,27 +378,22 @@ $("#lean_overlay").css({"display":"block",opacity:0});$("#lean_overlay").fadeTo(
 			overlay: 0.6,
 			closeButton: ".modal_close"
 	});
-
+	</script>
+	<script type="text/javascript">
 	$(function() {
+		// Calling Host Form
+		$("#register_form").click(function() {
+			$(".user_login").hide();
+			$(".user_register").show();
+			return false;
+		});
 
-			// Calling Host Form
-			$("#register_form").click(function() {
-				// alert("yay");
-				$(".user_login").hide();
-				$(".user_register").show();
-				return false;
-			});
-
-			// Calling Guest Form
-			$("#login_form").click(function() {
-				// alert("yay");
-				$(".user_register").hide();
-				$(".user_login").show();
-				return false;
-			});
-
-
-
+		// Calling Guest Form
+		$("#login_form").click(function() {
+			$(".user_login").show();
+			$(".user_register").hide();
+			return false;
+		});
 	});
 	</script>
 
