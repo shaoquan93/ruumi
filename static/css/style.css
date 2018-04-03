@@ -1343,10 +1343,10 @@ p.head_para {
     background: url(../images/move-top.png) no-repeat 0px 0px;
 	}
 
-/*	.powerbi {
+	.powerbi {
     	width:100%; 
     	height:1200px;
-    }*/
+    }
 
     /*--responsive--*/
 @media(max-width:1680px){
