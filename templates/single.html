@@ -88,7 +88,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
  -->				<div id="hoverli">
 						<img src="/static/images/user.png" alt="Image" height="35">
 						  	<div class="actions_menu">
-								<a href="#">My Account</a>
+								<a href="/myaccount">My Account</a>
 								<a href="/">Log Out</a>
 						  	</div>
 					</div>
@@ -147,8 +147,8 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 				</div>
 			</div>
 			<div class="col-md-6 single-right-left simpleCart_shelfItem">
-				<h3>Office space in raffles <i class="fas fa-wifi"></i>  <i class="fas fa-plug"></i> </h3>
-				<p><span class="item_price">$10 / hour</span>
+				<h3>{{space.Name}} <i class="fas fa-wifi"></i>  <i class="fas fa-plug"></i> </h3>
+				<p><span class="item_price">$20 / hour</span>
 				</p>
 				<div class="rating1">
 					<ul class="stars">
@@ -159,77 +159,34 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 					</ul>
 				</div>
 				<div class="description">
- 					Located right next to the MRT, making it an ideal meeting place! This office space has sufficient space for up to 20 people. Feel free to make use of our projector for your presentation. 
+ 					{{space.Description}} 
 				</div>
 				<div>
-					<form action="#" method="post" >
-<!-- 						<p><div class="input-group date" data-provide="datepicker">
-							<input type="text" class="form-control">     
-							<span class="glyphicon glyphicon-calendar input-group-addon"></span>
-						</div></p> -->
-<!-- 
-						<p style="font-size: 15px">Date: <input size="10" type="text" class="datepicker"  style="border-radius:5px; border:1px solid #d3d3d3; width:200px;  background:#ededed; height:35px; padding:0 10px;"></p> -->
+					<form action="/checkout/" method="post" >
+						<input type="text" name="space" value="1" hidden>
 						<p style="font-size: 15px">Date: 
-							<input size="10" type="text" data-provide="datepicker" data-date-autoclose="true" data-date-today-highlight="true"  data-date-start-date="today" data-date-format="mm/dd/yyyy" data-date-dates-disabled= ["04/06/2018","04/07/2018"]
+							<input name="datechoose" id="datechoose" size="10" type="text" data-provide="datepicker" data-date-autoclose="true" data-date-start-date={{start}} data-date-end-date={{end}} data-date-format="mm/dd/yyyy" data-date-dates-disabled= []
 							style="border-radius:5px; border:1px solid #d3d3d3; width:200px;  background:#ededed; height:35px; padding:0 10px;" >
 						</p>
-<!-- 						<div class="actions_menu">
-								<a href="#">My Account</a>
-								<a href="/">Log Out</a>
-						  	</div> -->
 						<p style="font-size: 15px">Start Time:  
-							<select id="time" type="time" style="border-radius:5px; border:1px solid #d3d3d3; width:200px; background:#ededed; height:35px; padding:0 10px;">
+							<select name="time1" id="time1" type="time" style="border-radius:5px; border:1px solid #d3d3d3; width:200px; background:#ededed; height:35px; padding:0 10px;" disabled>
 								<option disabled selected value></option>
-								<option value="12:00pm">12:00pm</option>
-							    <option value="12:30pm">12:30pm</option>
-							    <option value="12:00pm">1:00pm</option>
-							    <option value="12:30pm">1:30pm</option>
-							    <option value="12:00pm">2:00pm</option>
-							    <option value="12:30pm">2:30pm</option>
-							    <option value="12:00pm">3:00pm</option>
-							    <option value="12:30pm">3:30pm</option>
-							    <option value="12:00pm">4:00pm</option>
-							    <option value="12:30pm">4:30pm</option>
-							    <option value="12:00pm">5:00pm</option>
-							    <option value="12:30pm">5:30pm</option>
-							    <option value="12:00pm">6:00pm</option>
-							    <option value="12:30pm">6:30pm</option>
-							    <option value="12:00pm">7:00pm</option>
-							    <option value="12:30pm">7:30pm</option>
-							    <option value="12:00pm">8:00pm</option>
-							    <option value="12:30pm">8:30pm</option>
-							    <option value="12:00pm">9:00pm</option>
-							    <option value="12:30pm">9:30pm</option>
-							</select>
+<!-- 								<option value="12:00pm">12:00pm</option>
+ -->							</select>
 						</p>
 						<p style="font-size: 15px">End Time:  
-							<select id="time" type="time" style="border-radius:5px; border:1px solid #d3d3d3; width:200px; background:#ededed; height:35px; padding:0 10px;">
+							<select id="time2" type="time" style="border-radius:5px; border:1px solid #d3d3d3; width:200px; background:#ededed; height:35px; padding:0 10px;" disabled>
 								<option disabled selected value></option>
-							    <option value="12:00pm">4:00pm</option>
-							    <option value="12:30pm">4:30pm</option>
-							    <option value="12:00pm">5:00pm</option>
-							    <option value="12:30pm">5:30pm</option>
-							    <option value="12:00pm">6:00pm</option>
-							    <option value="12:30pm">6:30pm</option>
-							    <option value="12:00pm">7:00pm</option>
-							    <option value="12:30pm">7:30pm</option>
-							    <option value="12:00pm">8:00pm</option>
-							    <option value="12:30pm">8:30pm</option>
-							    <option value="12:00pm">9:00pm</option>
-							    <option value="12:30pm">9:30pm</option>
 							</select>
 						</p>
+						<input type="submit" name="submit" value="Book Now" class="button add">
 <!-- 						<p style="font-size: 15px">Duration: <input id="duration" type="text" value="1" style="border-radius:5px; border:1px solid #d3d3d3; width:170px; background:#ededed; height:35px; padding:0 10px;"></p> -->
 					</form>
 				</div>
-				<br>
+<!-- 				<br>
 				<div class="occasion-cart">
 					<div class="shoe single-item single_page_b">
-						<form action="/checkout/" method="post">
-							<input type="hidden" name="cmd" value="_cart">
-							<input type="hidden" name="add" value="1">
-							<input type="hidden" name="shoe_item" value="Office space in raffles place">
-							<input type="hidden" name="amount" value="10">
+						<form action="/checkout/" method="post" onclick="setValues();">
 							<input type="submit" name="submit" value="Book Now" class="button add">
 
 							<a href="/static/#" data-toggle="modal" data-target="#myModal1"></a>
@@ -237,7 +194,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 
 					</div>
 
-				</div>
+				</div> -->
 			</div>
 			<div class="clearfix"> </div>
 			<!--/tabs-->
@@ -439,7 +396,37 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 	<script type="text/javascript" src="/static/js/bootstrap-3.1.1.min.js"></script>
 
 	<!-- //datepicker --> 
-	<script type="text/javascript"></script>
+	<script type="text/javascript">
+		var times = {{ stime|safe }}
+		$('#datechoose').change(function(){
+			var chosen = $('#datechoose').val();
+			if (chosen != "") {
+				var e = document.getElementById("time1");
+				e.removeAttribute("disabled");
+				$.each(times, function (i, item) {
+				    $('#time1').append($('<option>', { 
+				        value: item,
+				        text : item 
+				    }));
+				});
+			}
+		});
+
+		$('#time1').change(function(){
+			var chosen = $('#time1').val();
+			if (chosen != "") {
+				var e = document.getElementById("time2");
+				e.removeAttribute("disabled");
+				var etimes = times.slice(times.indexOf(chosen)+1);
+				$.each(etimes, function (i, item) {
+				    $('#time2').append($('<option>', { 
+				        value: item,
+				        text : item 
+				    }));
+				});
+			}
+		});
+	</script>
 	<!-- so that wont open in safari -->
 	<script type="text/javascript">
 	$("a").click(function (event) {

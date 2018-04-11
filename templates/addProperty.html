@@ -1,0 +1,118 @@
+{% extends "layout.html" %}
+{% block title %}Property{% endblock %}
+{% block subtitle %}Add Property{% endblock %}
+{% block content %}
+    <div class="ads-grid_shop">
+        <div class="shop_inner_inf">
+            <div class="privacy about">
+                <h3>Add Property</h3>
+                <br>
+                    <form action="/add/" method="post" >
+                        <div>
+                            <div class="col-md-1">Name</div>
+                            <div class="col-md-7"><input name="name" type="text" style="border-radius:5px; border:1px solid #d3d3d3; width:500px;  background:#ededed; height:35px; padding:0 10px;" ></div>
+                            <div class="col-md-4">&nbsp;</div>
+                        </div>
+                        <div class="clearfix"></div>
+                        <br>
+                        <div>
+                            <div class="col-md-1">Description</div>
+                            <div class="col-md-7"><textarea name="description" style="border-radius:5px; border:1px solid #d3d3d3; width:500px;  background:#ededed; height:100px; padding:0 10px;"></textarea></div>
+                            <div class="col-md-4">&nbsp;</div>
+                        </div>
+                        <div class="clearfix"></div>
+                        <br>
+                        <div>
+                            <div class="col-md-1">Address</div>
+                            <div class="col-md-7"><input type="address" name="address" style="border-radius:5px; border:1px solid #d3d3d3; width:500px;  background:#ededed; height:35px; padding:0 10px;" ></div>
+                            <div class="col-md-4">&nbsp;</div>
+                        </div>
+                        <div class="clearfix"></div>
+                        <br>
+                        <div>
+                            <div class="col-md-1">Size</div>
+                            <div class="col-md-7"><input type="size" name="size" style="border-radius:5px; border:1px solid #d3d3d3; width:500px;  background:#ededed; height:35px; padding:0 10px;" ></div>
+                            <div class="col-md-4">&nbsp;</div>
+                        </div>
+                        <div class="clearfix"></div>
+                        <br>
+                        <div>
+                            <div class="col-md-1">Price</div>
+                            <div class="col-md-7"><input type="price" name="price" style="border-radius:5px; border:1px solid #d3d3d3; width:500px;  background:#ededed; height:35px; padding:0 10px;" ></div>
+                            <div class="col-md-4">&nbsp;</div>
+                        </div>
+                        <div class="clearfix"></div>
+                        <br>
+
+                        <div>
+                            <div class="col-md-1">Pictures</div>
+                            <div class="col-md-7"><input type="file" name="pic" accept="image/*"></div>
+                            <div class="col-md-4">&nbsp;</div>
+                        </div>
+                        <div>
+                            <div class="col-md-1"></div>
+                            <div class="col-md-7"><input type="file" name="pic" accept="image/*"></div>
+                            <div class="col-md-4">&nbsp;</div>
+                        </div>
+                        <div>
+                            <div class="col-md-1"></div>
+                            <div class="col-md-7"><input type="file" name="pic" accept="image/*"></div>
+                            <div class="col-md-4">&nbsp;</div>
+                        </div>
+                        <div class="clearfix"></div>
+                        <br>
+                        <div>
+                            <div class="col-md-1">Amenities</div>
+                            <div class="col-md-7">
+                                <input type="checkbox" name="Wifi" value="Wifi" style="margin-right:10px"><label style="margin-right:10px">Wifi</label>
+                                <input type="checkbox" name="Electricity" value="Electricity" style="margin-right:10px"><label style="margin-right:10px">Electricity</label>
+                                <input type="checkbox" name="Aircon" value="Aircon" style="margin-right:10px"><label style="margin-right:10px">Aircon</label>
+                                <input type="checkbox" name="Enclosed" value="Enclosed" style="margin-right:10px"><label style="margin-right:10px">Enclosed</label>
+                                <input type="checkbox" name="Enclosed" value="Enclosed" style="margin-right:10px"><label style="margin-right:10px">Projector</label>
+                            </div>
+                        </div>
+                        <div class="clearfix"></div>
+                        <div>
+                            <div class="col-md-1"></div>
+                            <div class="col-md-7">
+                                <input type="checkbox" name="Whiteboard" value="Whiteboard" style="margin-right:10px"><label style="margin-right:10px">Whiteboard</label>
+                                <input type="checkbox" name="Fan" value="Fan" style="margin-right:10px"><label style="margin-right:10px">Fan</label>
+                                <input type="checkbox" name="Toilet" value="Toilet" style="margin-right:10px"><label style="margin-right:10px">Toilet</label>
+                                <input type="checkbox" name="Parking" value="Parking" style="margin-right:10px"><label style="margin-right:10px">Parking</label>
+                                <input type="checkbox" name="Pantry" value="Pantry" style="margin-right:10px"><label style="margin-right:10px">Pantry</label>
+                            </div>
+                        </div>
+                        <div class="clearfix"></div>
+                        <br>
+
+                        <div>
+                            <div class="col-md-1">No. of Tables</div>
+                            <div class="col-md-2"><input name="tables" type="text" style="border-radius:5px; border:1px solid #d3d3d3; width:100px;  background:#ededed; height:35px; padding:0 10px;" ></div>
+                            </div>
+                        <div class="clearfix"></div>
+                        <br>
+                        <div>
+                            <div class="col-md-1">No. of Chairs</div>
+                            <div class="col-md-7"><input name="chairs" type="text" style="border-radius:5px; border:1px solid #d3d3d3; width:100px;  background:#ededed; height:35px; padding:0 10px;" ></div>
+                            <div class="col-md-4">&nbsp;</div>
+                        </div>
+                        <div class="clearfix"></div>
+                        <br>
+
+                        <div>
+                            <div class="col-md-1">Ownership Proof</div>
+                            <div class="col-md-7"><input type="file" name="pic" accept="image/*"></div>
+                            <div class="col-md-4">&nbsp;</div>
+                        </div>
+                        <div class="clearfix"></div>
+                        <br>
+                        
+                        <input type="submit" name="submit" value="Add Now" class="button add">
+<!--                        <p style="font-size: 15px">Duration: <input id="duration" type="text" value="1" style="border-radius:5px; border:1px solid #d3d3d3; width:170px; background:#ededed; height:35px; padding:0 10px;"></p> -->
+                    </form>
+            </div>
+        </div>
+        <div class="clearfix"></div>
+    </div>
+{% endblock %}
+

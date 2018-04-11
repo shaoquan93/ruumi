@@ -81,7 +81,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 					<div id="hoverli">
 						<img src="/static/images/user.png" alt="Image" height="35">
 						  	<div class="actions_menu">
-								<a href="#">My Account</a>
+								<a href="/myaccount">My Account</a>
 								<a href="/">Log Out</a>
 						  	</div>
 					</div>
@@ -173,7 +173,13 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 														<input class="expiration-month-and-year form-control" type="text" name="expiration-month-and-year" value="12 / 21">
 													</div>
 												</div>
-												<button><span>Make a payment </span></button>
+												<form>
+													<input type="text" name="space" value="{{space}}" hidden>
+													<input type="text" name="datechoose" value="{{datechoose}}" hidden>
+													<input type="text" name="time1" value="{{time1}}" hidden>
+													<input type="text" name="time2" value="{{time2}}" hidden>
+													<button type="submit"><span>Make a payment </span></button>
+												</form>
 											</div>
 										</section>
 									</form>

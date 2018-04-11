@@ -5,37 +5,30 @@
 	<div class="ads-grid_shop">
 		<div class="shop_inner_inf">
 			<div class="privacy about">
-				<h3>My Spaces<i class="fa fa-plus" style="font-size:25px; float:right;color:#4169E1;padding-right: 10px;"></i></h3>
+				<h3>My Spaces<a href="/addProperty"><i class="fa fa-plus" style="font-size:25px; float:right;color:#4169E1;padding-right: 10px;"></i></a></h3>
 				<br>
 				<table id="customers">
 				  <tr>
 				    <th>Space</th>
 				    <th>Options</th>
 				  </tr>
+				  {% if properties %}
+				  {% for property in properties %}
 				  <tr>
-				    <td valign="top"><br><p style="padding-left:3px">Office Space In Raffles Place</p></td>
+				    <td valign="top"><br><p style="padding-left:3px">{{ property['Name'] }} 
+				    	{% if property['verified'] %}
+				    	<i class="fa fa-check-circle" style="color:#4169E1"></i></p></td>
+				    	{% endif %}
 				    <td>
+				    	{% if property['verified'] %}
 				    	<a href="">Rentals</a><br>
 				    	<a href="/space123calendar">Calendar</a><br>
+				    	{% endif %}
 				    	<a href="">Edit</a>
 				    </td>
 				  </tr>
-				  <tr>
-				    <td valign="top"><br><p style="padding-left:3px">Convenient room in Chinatown</p></td>
-				    <td>
-				    	<a href="">Rentals</a><br>
-				    	<a href="">Calendar</a><br>
-				    	<a href="">Edit</a>
-				    </td>
-				  </tr>
-				  <tr>
-				    <td valign="top"><br><p style="padding-left:3px">Accessible room in Clarke Quay</p></td>
-				    <td>
-				    	<a href="">Rentals</a><br>
-				    	<a href="">Calendar</a><br>
-				    	<a href="">Edit</a>
-				    </td>
-				  </tr>
+				  {% endfor %}
+				  {% endif %}
 				</table>
 			</div>
 		</div>
