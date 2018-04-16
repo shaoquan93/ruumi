@@ -1,21 +1,19 @@
-from flask import Flask, request, jsonify
-from flask import render_template
+from flask import Flask, flash, redirect, render_template, request, session, abort, jsonify
 import requests
-from flask import redirect
-
 import dateutil.parser
 import numpy as np
 from datetime import datetime, timedelta
-
 from random import randint
+import os
+
+app = Flask(__name__, static_url_path='/static')
 
 def random_with_N_digits(n):
     range_start = 10**(n-1)
     range_end = (10**n)-1
     return randint(range_start, range_end)
 
-app = Flask(__name__, static_url_path='/static')
-
+# format time
 @app.template_filter('strftime')
 def _jinja2_filter_datetime(date, fmt=None):
     date = dateutil.parser.parse(date)
@@ -37,18 +35,49 @@ def _jinja2_filter_datetime(date, fmt=None):
     format='%H:%M'
     return native.strftime(format) 
 
-@app.route('/shop/')
-# @app.route('/hello/<name>')
-def shop():
-    return render_template('shop.html')
-
 @app.route('/')
-def hello():
-    return render_template('index.html')
+def index():
+    if not session.get('logged_in'):
+      return render_template('index.html')
+    elif session.get('type') == 'host':
+      return redirect('/host/')
+    else: #guest login
+      return redirect('/guest/')
+ 
+@app.route('/login/', methods=['POST'])
+def do_login():
+  if request.form['type'] == 'host':
+    if request.form['password'] == 'password' and request.form['username'] == 'tania@gmail.com':
+      session['logged_in'] = True
+      session['type'] = 'host'
+      return redirect('/host/')
+    else:
+      # better to pop up a msg to say password is wrong and open the login form
+      return redirect('/')
+  elif request.form['type'] == 'guest':
+    if request.form['password'] == 'password' and request.form['username'] == 'alok@gmail.com':
+      session['logged_in'] = True
+      session['type'] = 'guest'
+      return redirect('/guest/')
+    else:
+      # better to pop up a msg to say password is wrong and open the login form
+      return redirect('/')
+    return redirect('/')
+
+@app.route('/logout')
+def logout():
+   # remove the username from the session if it is there
+   # session.pop('username', None)
+   session['logged_in'] = False
+   return redirect('/')
 
 @app.route('/guest/')
 def guest_index():
     return render_template('guest_index.html')
+
+@app.route('/host/')
+def host_index():
+    return render_template('host_index.html')
 
 @app.route('/space123/')
 def space123():
@@ -196,10 +225,6 @@ def done():
         # then update listing for all the times
     return render_template('done.html')
 
-@app.route('/host/')
-def host_index():
-    return render_template('host_index.html')
-
 @app.route('/myrentals/')
 def account():
     return render_template('myacc.html')
@@ -240,4 +265,5 @@ def myaccount():
     return render_template('guest_acc.html', rentals=rentals)
 
 if __name__ == '__main__':
-  app.run()
+  app.secret_key = os.urandom(12)
+  app.run(debug=True, host='127.0.0.1', port=5000)

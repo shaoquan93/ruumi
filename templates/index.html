@@ -69,47 +69,52 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 					<section class="popupBody">
 						<!-- Guest Login -->
 						<div class="user_login">
-							<div class="action_btns">
-								<div class="one_half"><a href="#" id="login_form" class="btn btn_red">Guest</a></div>
-								<div class="one_half last"><a href="#" id="register_form" class="btn">Host</a></div>
-							</div>
-							<form>
+							<form method="post" action="{{ url_for('do_login') }}">
+								<select name="type" hidden>
+									<option value="guest" id="guestSelect" selected></option>
+									<option value="host" id="hostSelect"></option>
+								</select>
+								<div class="action_btns">
+									<div class="one_half btn btn_red" id="guest" onclick="selectGuest()">Guest</div>
+									<div class="one_half last btn" id="host" onclick="selectHost()">Host</div>
+								</div>
 								</br>
-								<label>Username</label>
-								<input type="email" />
+								<label>Email</label>
+								<input name="username" type="email" />
 								<br />
 
 								<label>Password</label>
-								<input type="password" />
+								<input name="password" type="password" />
 								<br />
+<!-- 								<button class="one_half btn btn_red" type="submit" name="type" value="host" >Host Login</button>
+								<button class="one_half last btn" type="submit" name="type" value="guest" >Guest Login</button> -->
 
-								<div class="action_btns">
-										<div class="one_but"><a href="/guest/" class="btn">Login</a></div>
-								</div>
+								<button class="one_but btn" type="submit">Login</button>
+<!-- 								<div class="action_btns">
+										<div class="one_but btn" type="submit">Login</div>
+								</div> -->
 							</form>
 						</div>
 						<!-- Host Login -->
-						<div class="user_register">
+<!-- 						<div class="user_register">
 							<div class="action_btns">
 								<div class="one_half"><a href="#" id="login_form" class="btn">Guest</a></div>
 								<div class="one_half last"><a href="#" id="register_form" class="btn btn_red">Host</a></div>
 							</div>
-							<form>
+							<form method="post" action="{{ url_for('do_login') }}">
 								</br>
 
-								<label>Username</label>
+								<label>Email</label>
 								<input type="email" />
 								<br />
 
 								<label>Password</label>
 								<input type="password" />
 								<br />
-
-								<div class="action_btns">
-									<div class="one_but"><a href="/host/" class="btn">Login</a></div>
+								<button type="submit" name="type" value="host" >Login</button>
 								</div>
 							</form>
-						</div>
+						</div> -->
 					</section>
 				</div>
                 <!-- search -->
@@ -382,21 +387,20 @@ $("#lean_overlay").css({"display":"block",opacity:0});$("#lean_overlay").fadeTo(
 	});
 	</script>
 	<script type="text/javascript">
-	$(function() {
-		// Calling Host Form
-		$("#register_form").click(function() {
-			$(".user_login").hide();
-			$(".user_register").show();
-			return false;
-		});
-
-		// Calling Guest Form
-		$("#login_form").click(function() {
-			$(".user_login").show();
-			$(".user_register").hide();
-			return false;
-		});
-	});
+	function selectGuest() {
+	    document.getElementById("guestSelect").selected = "true";
+	    var chosen = document.getElementById("guest");
+    	chosen.classList.add("btn_red");
+    	var notchosen = document.getElementById("host");
+    	notchosen.classList.remove("btn_red");
+	};
+	function selectHost() {
+	    document.getElementById("hostSelect").selected = "true";
+	    var chosen = document.getElementById("host");
+    	chosen.classList.add("btn_red");
+    	var notchosen = document.getElementById("guest");
+    	notchosen.classList.remove("btn_red");
+	}
 	</script>
 
 	<script type="text/javascript" src="/static/js/bootstrap-3.1.1.min.js"></script>
