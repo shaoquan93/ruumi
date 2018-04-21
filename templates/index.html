@@ -27,27 +27,8 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 	<link rel="stylesheet" href="/static/css/shop.css" type="text/css" media="screen" property="" />
 	<link href="/static/css/style7.css" rel="stylesheet" type="text/css" media="all" />
 	<link href="/static/css/style.css" rel="stylesheet" type="text/css" media="all" />
-	<!-- font-awesome-icons -->
 	<link href="/static/css/font-awesome.css" rel="stylesheet">
-	<!-- //font-awesome-icons -->
-<!-- 	<link href="//fonts.googleapis.com/css?family=Montserrat:100i,200,200i,300,300i,400,400i,500,500i,600,600i,700,700i,800"
-	    rel="stylesheet">
-	<link href="//fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i,800" rel="stylesheet"> -->
-	<link rel="manifest" href="/static/manifest.json"/>
 	<link rel="icon" sizes="84x84" href="/static/images/ruumi_logoo.png">
-    <meta name="apple-mobile-web-app-capable" content="yes"/>
-    <meta name="apple-mobile-web-app-status-bar-style" content="black"/>
-    <meta name="apple-mobile-web-app-title" content="Ruumi"/>
-    <link rel="apple-touch-icon" href="/static/images/apple_logo.png" sizes="84x84"/>
-    <link rel="apple-touch-icon" href="/static/images/apple_logo.png" sizes="150x150"/>
-    <link rel="apple-touch-icon" href="/static/images/apple_logo.png" sizes="300x300"/>
-    <link rel="apple-touch-icon" href="/static/images/apple_logo.png" sizes="600x600"/>
-    <link rel="apple-touch-icon" href="/static/images/apple_logo.png" sizes="24x24"/>
-    <meta name="msapplication-TileImage" content="/static/images/apple_logo.png"/>
-    <meta name="msapplication-TileColor" content="#FFFFFF"/>
-    <meta name="theme-color" content="#FFFFFF"/>
-    <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.4.9/angular.min.js"></script>
-
 </head>
 
 <body>
@@ -67,7 +48,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 						<span class="modal_close"><i class="fa fa-times"></i></span>
 					</header>
 					<section class="popupBody">
-						<!-- Guest Login -->
+						<!-- Login -->
 						<div class="user_login">
 							<form method="post" action="{{ url_for('do_login') }}">
 								<select name="type" hidden>
@@ -79,6 +60,9 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 									<div class="one_half last btn" id="host" onclick="selectHost()">Host</div>
 								</div>
 								</br>
+								{% if message %}
+								<p style="text-align:center;color:grey;">{{ message }}</p>
+								{% endif %}
 								<label>Email</label>
 								<input name="username" type="email" />
 								<br />
@@ -86,76 +70,28 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 								<label>Password</label>
 								<input name="password" type="password" />
 								<br />
-<!-- 								<button class="one_half btn btn_red" type="submit" name="type" value="host" >Host Login</button>
-								<button class="one_half last btn" type="submit" name="type" value="guest" >Guest Login</button> -->
-
 								<button class="one_but btn" type="submit">Login</button>
-<!-- 								<div class="action_btns">
-										<div class="one_but btn" type="submit">Login</div>
-								</div> -->
 							</form>
 						</div>
-						<!-- Host Login -->
-<!-- 						<div class="user_register">
-							<div class="action_btns">
-								<div class="one_half"><a href="#" id="login_form" class="btn">Guest</a></div>
-								<div class="one_half last"><a href="#" id="register_form" class="btn btn_red">Host</a></div>
-							</div>
-							<form method="post" action="{{ url_for('do_login') }}">
-								</br>
-
-								<label>Email</label>
-								<input type="email" />
-								<br />
-
-								<label>Password</label>
-								<input type="password" />
-								<br />
-								<button type="submit" name="type" value="host" >Login</button>
-								</div>
-							</form>
-						</div> -->
 					</section>
 				</div>
-                <!-- search -->
-                <div class="search_w3ls_agileinfo">
-                    <div class="cd-main-header">
-                        <ul class="cd-header-buttons">
-                            <li><a class="cd-search-trigger" href="#cd-search"> <span></span></a></li>
-                        </ul>
-                    </div>
-                    <div id="cd-search" class="cd-search">
-                        <form action="#" method="post">
-                            <input name="Search" type="search" placeholder="Click enter after typing...">
-                        </form>
-                    </div>
-                </div>
-                <!-- //search -->
-
-
 				<div class="clearfix"></div>
 			</div>
 			<!-- /slider -->
 			<div class="slider">
 				<div class="callbacks_container">
 					<ul class="rslides callbacks callbacks1" id="slider4">
-
 						<li>
-							<div class="banner-top2">
-							</div>
+							<div class="banner-top2"></div>
 						</li>
 						<li>
 							<div class="banner-top3">
-								<div class="banner-info-wthree">
-								</div>
-
+								<div class="banner-info-wthree"></div>
 							</div>
 						</li>
 						<li>
 							<div class="banner-top">
-								<div class="banner-info-wthree">
-								</div>
-
+								<div class="banner-info-wthree"></div>
 							</div>
 						</li>
 					</ul>
@@ -166,54 +102,6 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 		</div>
 	</div>
 	<!-- /Properties -->
-	<div class="mid_slider_w3lsagile">
-		<div class="col-md-3 mid_slider_text">
-			<h5>Ruumi available...</h5>
-		</div>
-		<div class="col-md-9 mid_slider_info">
-			<div id="myCarousel" class="carousel slide" data-ride="carousel">
-				<!-- Indicators -->
-				<ol class="carousel-indicators">
-					<li data-target="#myCarousel" data-slide-to="0" class="active"></li>
-					<li data-target="#myCarousel" data-slide-to="1" class=""></li>
-					<li data-target="#myCarousel" data-slide-to="2" class=""></li>
-					<li data-target="#myCarousel" data-slide-to="3" class=""></li>
-				</ol>
-				<div class="carousel-inner" role="listbox">
-					<div class="item active">
-						<div class="row">
-							<div class="col-md-3 col-sm-3 col-xs-3 slidering">
-								<div class="thumbnail"><a href="/space123/"><img src="/static/images/space1.jpeg" alt="Image" style="max-width:100%;"></a></div>
-							</div>
-							<div class="col-md-3 col-sm-3 col-xs-3 slidering">
-								<div class="thumbnail"><img src="/static/images/space3.jpg" alt="Image" style="max-width:100%;"></div>
-							</div>
-							<div class="col-md-3 col-sm-3 col-xs-3 slidering">
-								<div class="thumbnail"><img src="/static/images/space4.jpg" alt="Image" style="max-width:100%;"></div>
-							</div>
-							<div class="col-md-3 col-sm-3 col-xs-3 slidering">
-								<div class="thumbnail"><img src="/static/images/space5.jpeg" alt="Image" style="max-width:100%;"></div>
-							</div>
-						</div>
-					</div>
-				</div>
-				<a class="left carousel-control" href="#myCarousel" role="button" data-slide="prev">
-			<span class="fa fa-chevron-left" aria-hidden="true"></span>
-			<span class="sr-only">Previous</span>
-		</a>
-				<a class="right carousel-control" href="#myCarousel" role="button" data-slide="next">
-			<span class="fa fa-chevron-right" aria-hidden="true"></span>
-			<span class="sr-only">Next</span>
-		</a>
-				<!-- The Modal -->
-
-			</div>
-		</div>
-
-		<div class="clearfix"> </div>
-	</div>
-	<!--//banner -->
-
 	<!-- /newsletter-->
 	<div class="newsletter_w3layouts_agile">
 		<div class="col-sm-6 newsleft">
@@ -320,27 +208,6 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 	<!-- /nav -->
 	<script src="/static/js/modernizr-2.6.2.min.js"></script>
 	<script src="/static/js/classie.js"></script>
-<!-- 	<script src="/static/js/demo1.js"></script>
- -->	<!-- //nav -->
-	<!-- cart-js -->
-<!-- 	<script src="/static/js/minicart.js"></script>
-	<script>
-		shoe.render();
-
-		shoe.cart.on('shoe_checkout', function (evt) {
-			var items, len, i;
-
-			if (this.subtotal() > 0) {
-				items = this.items();
-
-				for (i = 0, len = items.length; i < len; i++) {}
-			}
-		});
-	</script> -->
-	<!-- //cart-js -->
-	<!--search-bar-->
-	<script src="/static/js/search.js"></script>
-	<!--//search-bar-->
 	<script src="/static/js/responsiveslides.min.js"></script>
 	<script>
 		$(function () {
@@ -374,10 +241,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 		});
 	</script>
 	<!-- //end-smoth-scrolling -->
-<!-- 	<script src='https://andwecode.com/wp-content/uploads/2015/10/jquery.leanModal.min_.js'></script>
- -->
- 	<script type="text/javascript">(function($){$.fn.extend({leanModal:function(options){var defaults={top:100,overlay:0.5,closeButton:null};var overlay=$("<div id='lean_overlay'></div>");$("body").append(overlay);options=$.extend(defaults,options);return this.each(function(){var o=options;$(this).click(function(e){var modal_id=$(this).attr("href");$("#lean_overlay").click(function(){close_modal(modal_id)});$(o.closeButton).click(function(){close_modal(modal_id)});var modal_height=$(modal_id).outerHeight();var modal_width=$(modal_id).outerWidth();
-$("#lean_overlay").css({"display":"block",opacity:0});$("#lean_overlay").fadeTo(200,o.overlay);$(modal_id).css({"display":"block","position":"fixed","opacity":0,"z-index":11000,"left":50+"%","margin-left":-(modal_width/2)+"px","top":o.top+"px"});$(modal_id).fadeTo(200,1);e.preventDefault()})});function close_modal(modal_id){$("#lean_overlay").fadeOut(200);$(modal_id).css({"display":"none"})}}})})(jQuery);</script>	
+ 	<script type="text/javascript" src="/static/js/jquery.leanModal.js"></script>
  	<script>
 	// Plugin options and code for pop up login form
 	$("#modal_trigger").leanModal({
@@ -402,16 +266,16 @@ $("#lean_overlay").css({"display":"block",opacity:0});$("#lean_overlay").fadeTo(
     	notchosen.classList.remove("btn_red");
 	}
 	</script>
-
-	<script type="text/javascript" src="/static/js/bootstrap-3.1.1.min.js"></script>
-	<!-- so that wont open in safari -->
+	{% if message %}
 	<script type="text/javascript">
-	$("a").click(function (event) {
-	    event.preventDefault();
-	    window.location = $(this).attr("href");
-	});
-    </script>
-
+		$("#modal_trigger").click();
+	</script>
+	{% if type == 'host' %}
+	<script type="text/javascript">selectHost();</script>
+	{% endif %}
+	{% endif %}
+	
+	<script type="text/javascript" src="/static/js/bootstrap-3.1.1.min.js"></script>
 
 </body>
 
