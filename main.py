@@ -82,6 +82,52 @@ def logout():
    session.pop('type', None)
    return redirect('/')
 
+@app.route('/signup')
+def signup():
+	return render_template('signup.html')
+
+@app.route('/signingup/', methods=['GET', 'POST'])
+def signingup():
+	cannot = os.listdir("static/uploads/")
+	picture = request.files['picture']
+	filename1 = str(random_with_N_digits(8))+'.png'
+	while filename1 in cannot:
+		filename1 = str(random_with_N_digits(8))+'.png'
+	picture.save(os.path.join(app.config['UPLOAD_FOLDER'], filename1))
+
+	verificationpic = request.files['verificationpic']
+	filename4 = str(random_with_N_digits(8))+'.png'
+	cannot.append(filename1)
+	while filename4 in cannot:
+		filename4 = str(random_with_N_digits(8))+'.png'
+	verificationpic.save(os.path.join(app.config['UPLOAD_FOLDER'], filename4))
+	
+	if request.form.get("type", "") == "Host":
+		json_val = {
+		  "$class": "org.acme.ruumi.SpaceOwner",
+		  "firstName": request.form.get("firstName", ""),
+		  "lastName": request.form.get("lastName", ""),
+		  "ID": str(random_with_N_digits(4)),
+		  "Email": request.form.get("Email", ""),
+		  "verified": "false",
+		  "verificationpic": int(filename4[:-4]),
+		  "picture": int(filename1[:-4])
+		}
+		r = requests.post('http://localhost:3000/api/org.acme.ruumi.SpaceOwner', data=json_val)
+	else:
+		json_val = {
+		  "$class": "org.acme.ruumi.SpaceFinder",
+		  "firstName": request.form.get("firstName", ""),
+		  "lastName": request.form.get("lastName", ""),
+		  "ID": str(random_with_N_digits(4)),
+		  "Email": request.form.get("Email", ""),
+		  "verified": "false",
+		  "verificationpic": int(filename4[:-4]),
+		  "picture": int(filename1[:-4])
+		}
+		r = requests.post('http://localhost:3000/api/org.acme.ruumi.SpaceFinder', data=json_val)
+   	return redirect('/')
+
 # ALL THE HOST SITES
 @app.route('/host/')
 def host_index():
@@ -132,8 +178,8 @@ def addingProperty():
 			cannot = os.listdir("static/uploads/")
 			while filename1 in cannot:
 				filename1 = str(random_with_N_digits(8))+'.png'
+			picture1.save(os.path.join(app.config['UPLOAD_FOLDER'], filename1))
 			
-
 			picture2 = request.files['picture2']
 			filename2 = str(random_with_N_digits(8))+'.png'
 			cannot.append(filename1)

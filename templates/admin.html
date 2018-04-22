@@ -108,7 +108,7 @@
 					  	<tr>
 					    <td valign="top"><br><p style="padding-left:30px"><b>{{guest.firstName}} {{guest.lastName}}</b><br>
 					    	{{guest.Email}}<br></td>
-					    <td><img src="/static/uploads/{{guest.verificationpic}}.png"></td>
+					    <td><img src="/static/uploads/{{guest.verificationpic}}.png" width="400px"></td>
 					    <td><a href="/verifyGuest/{{guest.ID}}">Verify</a></td>
 					  </tr>
 					  {% endif %}
@@ -127,7 +127,7 @@
 					  	<tr>
 					    <td valign="top"><br><p style="padding-left:30px"><b>{{host.firstName}} {{host.lastName}}</b><br>
 					    	{{host.Email}}<br></td>
-					    <td><img src="/static/uploads/{{host.verificationpic}}.png"></td>
+					    <td><img src="/static/uploads/{{host.verificationpic}}.png" width="400px"></td>
 					    <td><a href="/verifyHost/{{host.ID}}">Verify</a></td>
 					  </tr>
 					  {% endif %}
