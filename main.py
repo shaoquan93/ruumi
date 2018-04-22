@@ -1,11 +1,9 @@
 from flask import Flask, flash, redirect, render_template, request, session, abort, jsonify
 import requests
 import dateutil.parser
-import numpy as np
 from datetime import datetime, timedelta
 from random import randint
 import os
-from werkzeug.utils import secure_filename
 
 app = Flask(__name__, static_url_path='/static')
 app.secret_key = os.urandom(12)

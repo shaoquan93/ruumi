@@ -10,3 +10,5 @@ Flask-SeaSurf==0.2.2
 Flask-SQLAlchemy==1.0
 Flask-Testing==0.5.0
 Flask-Uploads==0.2.1
+requests==2.18.4
+python-dateutil
