@@ -7,7 +7,7 @@ Set up ur Hyperledger Blockchain with the .bna file provided and start the rest 
 ### Setting up Hyperledger Blockchain
 Navigate to ~/composer-playground on the Vagrant Virtual Machine Cloud IDE and issue the following command:
 ```
-./playground.sh up
+./playground.sh
 ```
 This will start the composer playground container:
 After this message is show, the composer-playground is start.
@@ -37,7 +37,9 @@ At this point, the business network is ready to be used.
   
 ### Starting REST server
 Enter into the CLI container and start the REST server using:
+```
 composer-rest-server -c <admin card>
+```
 This will start the REST server on port 3000, which can be viewed in the browser.
 
 ### Prerequisites
@@ -49,3 +51,5 @@ pip install -r requirements.txt
 python main.py
 ```
 
+### Accessing admin page
+go to http://localhost:5000/admin
