@@ -503,8 +503,8 @@ def done():
 			}
 
 			r = requests.post('http://localhost:3000/api/org.acme.ruumi.rentListing', data=json_val)
-		return jsonify(json_val)
-		# return render_template('done.html', picture=session['picture'], space=space, spacename=spacename, datechoose=datechoose, time1=time1, time2=time2)
+		# return jsonify(json_val)
+		return render_template('done.html', picture=session['picture'], space=space, spacename=spacename, datechoose=datechoose, time1=time1, time2=time2)
 	else:
 		return redirect('/')
 
