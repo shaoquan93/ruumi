@@ -318,7 +318,7 @@ def calendar(propertyId):
 		tNow += timedelta(hours = 1)
 
 		newstart = ""
-		for i in range(210):
+		for i in range(420):
 			if tNow.hour == 22:
 				if newstart != "":
 					Availabletimes.append({"datestart": newstart, "dateend": tNow.strftime("%Y-%m-%dT%H:%M:%S")})
