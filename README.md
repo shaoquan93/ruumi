@@ -80,7 +80,7 @@ python main.py
 
 
 ### Testing 
-Open up testing.doc
+Open up testing.docx
 
 The document consist 4 main test cases:
 
@@ -89,7 +89,7 @@ The document consist 4 main test cases:
   3. Unverified Space Finder unable to rent listings (Unsuccessful)
   4. Space Finders who did not rent a listing unable to write a review (Unsuccessful)
   
-Photos used in the test cases are provided in static/images/
+Photos used in the test cases are provided in static/SAMPLEPICS/
 
 All the test cases can be done on the Hyperledger Composer Playground.
 
