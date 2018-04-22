@@ -7,31 +7,32 @@
 			<div class="privacy about">
 				<h3>My Spaces<a href="/addProperty"><i class="fa fa-plus" style="font-size:25px; float:right;color:#4169E1;padding-right: 10px;"></i></a></h3>
 				<br>
+				{% if properties %}
 				<table id="customers">
-				  <tr>
-				    <th>Space</th>
-				    <th>Options</th>
-				  </tr>
-				  {% if properties %}
-				  {% for properti in properties %}
-				  <tr>
-				    <td valign="top"><br><p style="padding-left:3px">{{ properti['Name'] }} 
-				    	{% if properti['verified'] %}
-				    	<i class="fa fa-check-circle" style="color:#4169E1"></i></p></td>
-				    	{% endif %}
-				    <td>
-				    	{% if properti['verified'] %}
-				    	<a href="">Rentals</a><br>
-				    	<a href="/calender/{% properti.propertyId %}">Calendar</a><br>
-				    	{% endif %}
-				    	<a href="">Edit</a>
-				    </td>
-				  </tr>
-				  {% endfor %}
-				  {% else %}
-				  <h5>You have not added any property yet!</h5>
-				  {% endif %}
+				  	<tr>
+				    	<th>Space</th>
+				    	<th>Options</th>
+				  	</tr>
+				  	{% for properti in properties %}
+				 	<tr>
+					    <td valign="top">
+					    	<p style="padding-left:3px">{{ properti['Name'] }} @ {{ properti['Address'] }}
+					    	{% if properti['verified'] %}
+					    	<i class="fa fa-check-circle" style="color:#4169E1"></i></p>
+					    	{% endif %}
+					    </td>
+					    <td>
+					    	{% if properti['verified'] %}
+					    	<a href="/calendar/{{ properti['propertyId'] }}">Calendar (Choose Available Time)</a><br>
+					    	{% endif %}
+					    	<a href="/editProperty/{{ properti['propertyId'] }}">Edit</a>
+				    	</td>
+				  	</tr>
+				  	{% endfor %}
 				</table>
+				{% else %}
+				<h5>You have not added any property yet!</h5>
+				{% endif %}
 			</div>
 		</div>
 

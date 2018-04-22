@@ -12,8 +12,6 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 	<!-- custom-theme -->
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-	<meta name="keywords" content="Downy Shoes Responsive web template, Bootstrap Web Templates, Flat Web Templates, Android Compatible web template, 
-Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, SonyEricsson, Motorola web design" />
 	<script type="application/x-javascript">
 		addEventListener("load", function () {
 			setTimeout(hideURLbar, 0);
@@ -140,13 +138,13 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 		</div>
 	</div>
 	<!-- /Properties -->
+	{% if properties %}
 	<div class="mid_slider_w3lsagile">
 		<div class="col-md-3 mid_slider_text">
 			<h5>Ruumi available...</h5>
 		</div>
 		<div class="col-md-9 mid_slider_info">
 			<div id="myCarousel" class="carousel slide" data-ride="carousel">
-				<!-- Indicators -->
 				<ol class="carousel-indicators">
 					<li data-target="#myCarousel" data-slide-to="0" class="active"></li>
 					<li data-target="#myCarousel" data-slide-to="1" class=""></li>
@@ -156,53 +154,35 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 				<div class="carousel-inner" role="listbox">
 					<div class="item active">
 						<div class="row">
+							{% for properti in properties %}
+					{%  if loop.index is divisibleby(5) %}
+						</div>
+					</div>
+					<div class="item">
+						<div class="row">
+					{% endif %}
 							<div class="col-md-3 col-sm-3 col-xs-3 slidering">
-								<div class="thumbnail"><a href="/space123/"><img src="/static/images/space1.jpeg" alt="Image" style="max-width:100%;"></a></div>
+								<div class="thumbnail"><a href="/space/{{ properti.propertyId }}"><img src="/static/uploads/{{ properti.picture1 }}.png" alt="{{ properti.Name }}" style="max-width:100%;"></a></div>
 							</div>
-							<div class="col-md-3 col-sm-3 col-xs-3 slidering">
-								<div class="thumbnail"><img src="/static/images/space3.jpg" alt="Image" style="max-width:100%;"></div>
-							</div>
-							<div class="col-md-3 col-sm-3 col-xs-3 slidering">
-								<div class="thumbnail"><img src="/static/images/space4.jpg" alt="Image" style="max-width:100%;"></div>
-							</div>
-							<div class="col-md-3 col-sm-3 col-xs-3 slidering">
-								<div class="thumbnail"><img src="/static/images/space5.jpeg" alt="Image" style="max-width:100%;"></div>
-							</div>
+							{% endfor %}
 						</div>
 					</div>
 				</div>
 				<a class="left carousel-control" href="#myCarousel" role="button" data-slide="prev">
-			<span class="fa fa-chevron-left" aria-hidden="true"></span>
-			<span class="sr-only">Previous</span>
-		</a>
+					<span class="fa fa-chevron-left" aria-hidden="true"></span>
+					<span class="sr-only">Previous</span>
+				</a>
 				<a class="right carousel-control" href="#myCarousel" role="button" data-slide="next">
-			<span class="fa fa-chevron-right" aria-hidden="true"></span>
-			<span class="sr-only">Next</span>
-		</a>
-				<!-- The Modal -->
-
+					<span class="fa fa-chevron-right" aria-hidden="true"></span>
+					<span class="sr-only">Next</span>
+				</a>
 			</div>
 		</div>
 
 		<div class="clearfix"> </div>
 	</div>
+	{% endif %}
 	<!--//banner -->
-
-	<!-- /newsletter-->
-	<div class="newsletter_w3layouts_agile">
-		<div class="col-sm-6 newsleft">
-			<h3>Sign up for Newsletter !</h3>
-		</div>
-		<div class="col-sm-6 newsright">
-			<form action="#" method="post">
-				<input type="email" placeholder="Enter your email..." name="email" required="">
-				<input type="submit" value="Submit">
-			</form>
-		</div>
-
-		<div class="clearfix"></div>
-	</div>
-	<!-- //newsletter-->
 	<!-- footer -->
 	<div class="footer_agileinfo_w3">
 		<div class="footer_inner_info_w3ls_agileits">
@@ -296,22 +276,6 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 	<script src="/static/js/classie.js"></script>
 	<script src="/static/js/demo1.js"></script>
 	<!-- //nav -->
-	<!-- cart-js -->
-	<script src="/static/js/minicart.js"></script>
-	<script>
-		shoe.render();
-
-		shoe.cart.on('shoe_checkout', function (evt) {
-			var items, len, i;
-
-			if (this.subtotal() > 0) {
-				items = this.items();
-
-				for (i = 0, len = items.length; i < len; i++) {}
-			}
-		});
-	</script>
-	<!-- //cart-js -->
 	<!--search-bar-->
 	<script src="/static/js/search.js"></script>
 	<!--//search-bar-->
@@ -348,47 +312,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 		});
 	</script>
 	<!-- //end-smoth-scrolling -->
-	<script src='https://andwecode.com/wp-content/uploads/2015/10/jquery.leanModal.min_.js'></script>
-	<script>
-	// Plugin options and code for pop up login form
-	$("#modal_trigger").leanModal({
-			top: 100,
-			overlay: 0.6,
-			closeButton: ".modal_close"
-	});
-
-	$(function() {
-
-			// Calling Host Form
-			$("#register_form").click(function() {
-				alert("yay");
-				$(".user_login").hide();
-				$(".user_register").show();
-				return false;
-			});
-
-			// Calling Guest Form
-			$("#login_form").click(function() {
-				alert("yay");
-				$(".user_register").hide();
-				$(".user_login").show();
-				return false;
-			});
-
-
-
-	});
-	</script>
-
 	<script type="text/javascript" src="/static/js/bootstrap-3.1.1.min.js"></script>
-	<!-- so that wont open in safari -->
-	<script type="text/javascript">
-	$("a").click(function (event) {
-	    event.preventDefault();
-	    window.location = $(this).attr("href");
-	});
-	</script>
-
 
 </body>
 

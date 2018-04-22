@@ -73,7 +73,7 @@
 						<img src="/static/images/user.png" alt="Image" height="35">
 						  	<div class="actions_menu">
 								<a href="/myaccount">My Account</a>
-								<a href="/">Log Out</a>
+								<a href="/logout">Log Out</a>
 						  	</div>
 					</div>
 				</div>
@@ -114,7 +114,13 @@
 	<div class="ads-grid_shop">
 		<div class="shop_inner_inf">
 			<div class="privacy about">
-				<h3>Pay<span>ment</span></h3>
+<!-- 				<h3>Pay<span>ment</span></h3> -->
+				<br>
+				<h3>You're booking</h3>
+				<br>
+				<h3 style="margin-left: 30px;"><font color="#FF5733">{{spacename}}</font></h3> 
+				<h3 style="margin-left: 30px;"><font color="#FF5733">On {{datechoose}}</font></h3> 
+				<h3 style="margin-left: 30px;"><font color="#FF5733">From {{time1}} to {{time2}}</font></h3> 
 				<!--/tabs-->
 				<div class="responsive_tabs">
 					<div id="horizontalTab">
@@ -156,6 +162,7 @@
 												</div>
 												<form>
 													<input type="text" name="space" value="{{space}}" hidden>
+													<input type="text" name="spacename" value="{{spacename}}" hidden>
 													<input type="text" name="datechoose" value="{{datechoose}}" hidden>
 													<input type="text" name="time1" value="{{time1}}" hidden>
 													<input type="text" name="time2" value="{{time2}}" hidden>

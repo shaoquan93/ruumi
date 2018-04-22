@@ -11,8 +11,6 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 	<title>Ruumi - My Review</title>
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-	<meta name="keywords" content="Downy Shoes Responsive web template, Bootstrap Web Templates, Flat Web Templates, Android Compatible web template, 
-Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, SonyEricsson, Motorola web design" />
 	<script type="application/x-javascript">
 		addEventListener("load", function () {
 			setTimeout(hideURLbar, 0);
@@ -33,8 +31,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 	<link rel="stylesheet" type="text/css" href="/static/css/jquery-ui1.css">
 	<link href="/static/css/style.css" rel="stylesheet" type="text/css" media="all" />
 	<!-- font-awesome-icons -->
-<!-- 	<link href="/static/css/font-awesome.css" rel="stylesheet">
- -->	<script defer src="https://use.fontawesome.com/releases/v5.0.9/js/all.js" integrity="sha384-8iPTk2s/jMVj81dnzb/iFR2sdA7u06vHJyyLlAd4snFpCl/SnyUjRrbdJsw1pGIl" crossorigin="anonymous"></script>
+	<script defer src="https://use.fontawesome.com/releases/v5.0.9/js/all.js" integrity="sha384-8iPTk2s/jMVj81dnzb/iFR2sdA7u06vHJyyLlAd4snFpCl/SnyUjRrbdJsw1pGIl" crossorigin="anonymous"></script>
 
 
 	<style type="text/css">
@@ -66,39 +63,49 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 	#hoverli:hover .actions_menu {
 	    display: block;
 	}
-
-.rating-wrapper {
-  overflow: hidden;
-  display: inline-block;
-}
-
-.rating-input {
-  position: absolute;
-  left: 0;
-  top: -50px;
-}
-
-.rating-star:hover,
-.rating-star:hover ~ .rating-star {
-  background-position: 0 0;
-}
-
-.rating-wrapper:hover .rating-star:hover,
-.rating-wrapper:hover .rating-star:hover ~ .rating-star,
-.rating-input:checked ~ .rating-star {
-  background-position: 0 0;
-}
-
-.rating-star,
-.rating-wrapper:hover .rating-star {
-  float: right;
-  display: block;
-  width: 16px;
-  height: 16px;
-  background: url('http://css-stars.com/wp-content/uploads/2013/12/stars.png') 0 -16px;
-}
-
 	</style>
+	<script type="text/javascript">
+	function starsFive() {
+		document.getElementById("ratingval").value = "5";
+		document.getElementById("onestar").style.color = "gold";
+		document.getElementById("twostar").style.color = "gold";;
+		document.getElementById("threestar").style.color = "gold";;
+		document.getElementById("fourstar").style.color = "gold";;
+		document.getElementById("fivestar").style.color = "gold";;
+	};
+	function starsFour() {
+		document.getElementById("ratingval").value = "4";
+		document.getElementById("onestar").style.color = "gold";
+		document.getElementById("twostar").style.color = "gold";;
+		document.getElementById("threestar").style.color = "gold";;
+		document.getElementById("fourstar").style.color = "gold";;
+		document.getElementById("fivestar").style.color = "black";;
+	};
+	function starsThree() {
+		document.getElementById("ratingval").value = "3";
+		document.getElementById("onestar").style.color = "gold";
+		document.getElementById("twostar").style.color = "gold";;
+		document.getElementById("threestar").style.color = "gold";;
+		document.getElementById("fourstar").style.color = "black";;
+		document.getElementById("fivestar").style.color = "black";;
+	};
+	function starsTwo() {
+		document.getElementById("ratingval").value = "2";
+		document.getElementById("onestar").style.color = "gold";
+		document.getElementById("twostar").style.color = "gold";;
+		document.getElementById("threestar").style.color = "black";;
+		document.getElementById("fourstar").style.color = "black";;
+		document.getElementById("fivestar").style.color = "black";;
+	};
+	function starsOne() {
+		document.getElementById("ratingval").value = "1";
+		document.getElementById("onestar").style.color = "gold";
+		document.getElementById("twostar").style.color = "black";;
+		document.getElementById("threestar").style.color = "black";;
+		document.getElementById("fourstar").style.color = "black";;
+		document.getElementById("fivestar").style.color = "black";;
+	};
+	</script>
 
 </head>
 
@@ -113,7 +120,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 						<img src="/static/images/user.png" alt="Image" height="35">
 						  	<div class="actions_menu">
 								<a href="/myaccount">My Account</a>
-								<a href="/">Log Out</a>
+								<a href="/logout">Log Out</a>
 						  	</div>
 					</div>
 				</div>
@@ -153,15 +160,40 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                 <h3>Review</h3>
                 <br>
                     <form action="/addReview/{{rentalID}}" method="post" >
-                        <div>
-                            <div class="col-md-1">Title</div>
-                            <div class="col-md-7"><input name="title" type="text" style="border-radius:5px; border:1px solid #d3d3d3; width:500px;  background:#ededed; height:35px; padding:0 10px;" ></div>
+                    	<div>
+                        	<div class="col-md-2">Rating</div>
+							<div class="col-md-7">
+								<div onclick="starsOne()" style="display: inline-block">
+								       <i class="fa fa-star" id="onestar"></i>
+								</div>
+								<div onclick="starsTwo()" style="display: inline-block">
+								       <i class="fa fa-star" id="twostar"></i>
+								</div>
+								<div onclick="starsThree()" style="display: inline-block">
+								       <i class="fa fa-star" id="threestar"></i>
+								</div>
+								<div onclick="starsFour()" style="display: inline-block">
+								       <i class="fa fa-star" id="fourstar"></i>
+								</div>
+								<div onclick="starsFive()" style="display: inline-block">
+								       <i class="fa fa-star" id="fivestar"></i>
+								</div>
+							</div>
+
+                       	</div>
+                        <div class="clearfix"></div>
+                        <br>
+                        <input type="text" id="ratingval" name="ratingval" value=0 hidden></input>
+                    	<div>
+                            <div class="col-md-2" style="padding-top: 15px;">Review Text</div>
+                            <div class="col-md-7"><textarea name="review" style="border-radius:5px; border:1px solid #d3d3d3; width:500px;  background:#ededed; height:200px; padding:10px 10px 10px 10px;"></textarea></div>
                             <div class="col-md-4">&nbsp;</div>
                         </div>
                         <div class="clearfix"></div>
                         <br>
+
                         <div>
-                            <div class="col-md-1">Amenities</div>
+                            <div class="col-md-2">Were the amenities provided?</div>
                             <div class="col-md-7">
                                 <input type="checkbox" name="Wifi" value="Wifi" style="margin-right:10px"><label style="margin-right:10px">Wifi</label>
                                 <input type="checkbox" name="Electricity" value="Electricity" style="margin-right:10px"><label style="margin-right:10px">Electricity</label>
@@ -172,7 +204,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                         </div>
                         <div class="clearfix"></div>
                         <div>
-                            <div class="col-md-1"></div>
+                            <div class="col-md-2"></div>
                             <div class="col-md-7">
                                 <input type="checkbox" name="Whiteboard" value="Whiteboard" style="margin-right:10px"><label style="margin-right:10px">Whiteboard</label>
                                 <input type="checkbox" name="Fan" value="Fan" style="margin-right:10px"><label style="margin-right:10px">Fan</label>
@@ -183,36 +215,8 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                         </div>
                         <div class="clearfix"></div>
                         <br>
-                        <div>
-                        	<div class="col-md-1">Rating</div>
-<!--                         	<div class="col-md-7"> -->
-	                        	<div class="rating-wrapper">
-								  <input type="radio" class="rating-input" id="rating-input-1-5" name="rating-input-1" />
-								  <label for="rating-input-1-5" class="rating-star"></label>
-								  <input type="radio" class="rating-input" id="rating-input-1-4" name="rating-input-1" />
-								  <label for="rating-input-1-4" class="rating-star"></label>
-								  <input type="radio" class="rating-input" id="rating-input-1-3" name="rating-input-1" />
-								  <label for="rating-input-1-3" class="rating-star"></label>
-								  <input type="radio" class="rating-input" id="rating-input-1-2" name="rating-input-1" />
-								  <label for="rating-input-1-2" class="rating-star"></label>
-								  <input type="radio" class="rating-input" id="rating-input-1-1" name="rating-input-1" />
-								  <label for="rating-input-1-1" class="rating-star"></label>
-								</div>
-<!-- 							</div> -->
-                        </div>
-                        <div class="clearfix"></div>
-                        <br>
-                        <div>
-                            <div class="col-md-1">Text</div>
-                            <div class="col-md-7"><textarea name="review" style="border-radius:5px; border:1px solid #d3d3d3; width:500px;  background:#ededed; height:100px; padding:0 10px;"></textarea></div>
-                            <div class="col-md-4">&nbsp;</div>
-                        </div>
-                        <div class="clearfix"></div>
-                        <br>
-                        
                         
                         <input type="submit" name="submit" value="Submit" class="button add">
-<!--                        <p style="font-size: 15px">Duration: <input id="duration" type="text" value="1" style="border-radius:5px; border:1px solid #d3d3d3; width:170px; background:#ededed; height:35px; padding:0 10px;"></p> -->
                     </form>
             </div>
         </div>

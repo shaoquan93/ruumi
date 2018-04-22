@@ -11,8 +11,6 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 	<title>Ruumi - My Account</title>
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-	<meta name="keywords" content="Downy Shoes Responsive web template, Bootstrap Web Templates, Flat Web Templates, Android Compatible web template, 
-Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, SonyEricsson, Motorola web design" />
 	<script type="application/x-javascript">
 		addEventListener("load", function () {
 			setTimeout(hideURLbar, 0);
@@ -99,7 +97,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 						<img src="/static/images/user.png" alt="Image" height="35">
 						  	<div class="actions_menu">
 								<a href="#">My Account</a>
-								<a href="/">Log Out</a>
+								<a href="/logout">Log Out</a>
 						  	</div>
 					</div>
 				</div>
@@ -150,9 +148,10 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 				  {% if not rental.past %}
 				  <tr>
 				  	<!-- <img src="/static/images/new.png" alt="Image" height="20"> -->
-				    <td valign="top"><br><p style="padding-left:30px"><b>{{rental.listing.property.Name}}</b><br>
-				    	Date: {{rental.listing.datestart|strftime}}<br>
-				    	Time: {{rental.listing.datestart|strftime1}} - {{rental.listing.datestart|strftime3}}<br></p><br></td>
+				    <td valign="top"><br><p style="padding-left:30px"><b>{{rental.property.Name}}</b><br>
+				    	Date: {{rental.datestart|strftime}}<br>
+				    	Time: {{rental.datestart|strftime1}}<br>
+				    	Duration: {{rental.duration}} Hours</p><br></td>
 				    <td>Upcoming</td>
 				  </tr>
 				  {% endif %}
@@ -177,9 +176,10 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 				  {% if rental.past %}
 				  <tr>
 				  	<!-- <img src="/static/images/new.png" alt="Image" height="20"> -->
-				    <td valign="top"><br><p style="padding-left:30px"><b>{{rental.listing.property.Name}}</b><br>
-				    	Date: {{rental.listing.datestart|strftime}}<br>
-				    	Time: {{rental.listing.datestart|strftime1}} - {{rental.listing.datestart|strftime3}}<br></p><br></td>
+				    <td valign="top"><br><p style="padding-left:30px"><b>{{rental.property.Name}}</b><br>
+				    	Date: {{rental.datestart|strftime}}<br>
+				    	Time: {{rental.datestart|strftime1}}<br>
+				    	Duration: {{rental.duration}} Hours</p><br></td>
 				    
 				    {% if not rental.reviewed %}
 				    <td><a href="/submitReview/{{rental.rentalID}}">Review</a></td>

@@ -1,0 +1,82 @@
+{% extends "layout.html" %}
+{% block title %}Property{% endblock %}
+{% block subtitle %}Edit Property{% endblock %}
+{% block content %}
+    <div class="ads-grid_shop">
+        <div class="shop_inner_inf">
+            <div class="privacy about">
+                <h3>Edit Property: {{properti.Name}} @ {{properti.Address}}</h3>
+                <br>
+                    <form action="/editingProperty/{{properti.propertyId}}" method="post" enctype="multipart/form-data">
+                        <div>
+                            <div class="col-md-1">Description</div>
+                            <div class="col-md-7"><textarea name="description" style="border-radius:5px; border:1px solid #d3d3d3; width:500px;  background:#ededed; height:100px; padding:10px 10px 10px 10px;">{{properti.Description}}</textarea></div>
+                            <div class="col-md-4">&nbsp;</div>
+                        </div>
+                        <div class="clearfix"></div>
+                        <br>
+                        <div>
+                            <div class="col-md-1">Size (in sqft)</div>
+                            <div class="col-md-7"><input type="text" name="size" style="border-radius:5px; border:1px solid #d3d3d3; width:500px;  background:#ededed; height:35px; padding:0 10px;" value="{{properti.Size}}"></div>
+                            <div class="col-md-4">&nbsp;</div>
+                        </div>
+                        <div class="clearfix"></div>
+                        <br>
+                        <div>
+                            <div class="col-md-1">Price (per hour)</div>
+                            <div class="col-md-7"><input type="text" name="price" style="border-radius:5px; border:1px solid #d3d3d3; width:500px;  background:#ededed; height:35px; padding:0 10px;" value="{{properti.price}}"></div>
+                            <div class="col-md-4">&nbsp;</div>
+                        </div>
+                        <div class="clearfix"></div>
+                        <br>
+                        <input name="address" value={{properti.Address}} hidden>
+                        <input name="picture1" value={{properti.picture1}} hidden>
+                        <input name="picture2" value={{properti.picture2}} hidden>
+                        <input name="picture3" value={{properti.picture3}} hidden>
+                        <div>
+                            <div class="col-md-1">Amenities</div>
+                            <div class="col-md-7">
+                                <input type="checkbox" name="wifi" value="Wifi" style="margin-right:10px" 
+                                {% if properti.wifi %}checked{% endif %}><label style="margin-right:10px">Wifi</label>
+                                <input type="checkbox" name="electricity" value="Electricity" style="margin-right:10px" {% if properti.electricity %}checked{% endif %}><label style="margin-right:10px">Electricity</label>
+                                <input type="checkbox" name="aircon" value="Aircon" style="margin-right:10px" {% if properti.aircon %}checked{% endif %}><label style="margin-right:10px">Aircon</label>
+                                <input type="checkbox" name="enclosed" value="Enclosed" style="margin-right:10px" {% if properti.enclosed %}checked{% endif %}><label style="margin-right:10px">Enclosed</label>
+                                <input type="checkbox" name="projector" value="Projector" style="margin-right:10px" {% if properti.projector %}checked{% endif %}><label style="margin-right:10px">Projector</label>
+                            </div>
+                        </div>
+                        <div class="clearfix"></div>
+                        <div>
+                            <div class="col-md-1"></div>
+                            <div class="col-md-7">
+                                <input type="checkbox" name="whiteboard" value="Whiteboard" style="margin-right:10px" {% if properti.whiteboard %}checked{% endif %}><label style="margin-right:10px">Whiteboard</label>
+                                <input type="checkbox" name="fan" value="Fan" style="margin-right:10px" {% if properti.fan %}checked{% endif %}><label style="margin-right:10px">Fan</label>
+                                <input type="checkbox" name="toilet" value="Toilet" style="margin-right:10px" {% if properti.toilet %}checked{% endif %}><label style="margin-right:10px">Toilet</label>
+                                <input type="checkbox" name="parking" value="Parking" style="margin-right:10px" {% if properti.parking %}checked{% endif %}><label style="margin-right:10px">Parking</label>
+                                <input type="checkbox" name="pantry" value="Pantry" style="margin-right:10px" {% if properti.pantry %}checked{% endif %}><label style="margin-right:10px">Pantry</label>
+                            </div>
+                        </div>
+                        <div class="clearfix"></div>
+                        <br>
+
+                        <div>
+                            <div class="col-md-1">No. of Tables</div>
+                            <div class="col-md-2"><input name="tables" type="text" style="border-radius:5px; border:1px solid #d3d3d3; width:100px;  background:#ededed; height:35px; padding:0 10px;" value={{properti.tables}}></div>
+                            </div>
+                        <div class="clearfix"></div>
+                        <br>
+                        <div>
+                            <div class="col-md-1">No. of Chairs</div>
+                            <div class="col-md-7"><input name="chairs" type="text" style="border-radius:5px; border:1px solid #d3d3d3; width:100px;  background:#ededed; height:35px; padding:0 10px;" value={{properti.chairs}}></div>
+                            <div class="col-md-4">&nbsp;</div>
+                        </div>
+                        <div class="clearfix"></div>
+                        <br>
+                        
+                        <input type="submit" name="submit" value="Submit" class="button add">
+                    </form>
+            </div>
+        </div>
+        <div class="clearfix"></div>
+    </div>
+{% endblock %}
+

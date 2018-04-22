@@ -63,7 +63,7 @@
 			<div class="header_agileits">
 				<div class="mobile-nav-button">
 					<div id="hoverli">
-						<img src="/static/images/{{ picture }}" alt="Image" height="35">
+						<img src="/static/uploads/{{ picture }}" alt="Image" height="35">
 							<div class="actions_menu">
 								<a href="/myspaces/">My Spaces</a>
 								<a href="/myrentals/">My Rentals</a>
@@ -105,6 +105,7 @@
 
 		</div>
 	</div>
+	{% if properties %}
 	<!-- /Properties -->
 	<div class="mid_slider_w3lsagile">
 		<div class="col-md-3 mid_slider_text">
@@ -129,7 +130,7 @@
 						<div class="row">
 					{% endif %}
 							<div class="col-md-3 col-sm-3 col-xs-3 slidering">
-								<div class="thumbnail"><a href="/space123/"><img src="/static/uploads/{{ properti.picture1 }}.png" alt="{{ properti.Name }}" style="max-width:100%;"></a></div>
+								<div class="thumbnail"><a href="/myspaces/"><img src="/static/uploads/{{ properti.picture1 }}.png" alt="{{ properti.Name }}" style="max-width:100%;"></a></div>
 							</div>
 							{% endfor %}
 						</div>
@@ -148,6 +149,7 @@
 
 		<div class="clearfix"> </div>
 	</div>
+	{% endif %}
 	<!--//banner -->
 	<!-- footer -->
 	<div class="footer_agileinfo_w3">

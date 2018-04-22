@@ -12,14 +12,18 @@
 				    <th>Space</th>
 				    <th>Details</th>
 				  </tr>
+				  {% for rental in rentals %}
+				  {% if not rental.before %}
 				  <tr>
-				    <td valign="top"><br><p style="padding-left:3px">Office Space In Raffles Place</p></td>
+				    <td valign="top"><br><p style="padding-left:3px">{{rental.property.Name}}</p></td>
 				    <td>By 
-				    	<img src="/static/images/user.png" alt="Image" height="35"> Alok Singer<br>
-				    	Date: 5 April 2018<br>
-				    	Time: 3:30pm - 4:30pm<br>
-				    	Duration: 1 Hours<br></td>
+				    	<img src="/static/uploads/{{rental.finder.picture}}.png" alt="Image" height="35"> {{rental.finder.firstName}} {{rental.finder.lastName}}<br>
+				    	Date: {{rental.date}}<br>
+				    	Start Time: {{rental.timestart}}<br>
+				    	Duration: {{rental.Duration}} Hours<br></td>
 				  </tr>
+				  {% endif %}
+				  {% endfor %}
 				</table>
 			</div>
 
@@ -33,14 +37,18 @@
 				    <th>Space</th>
 				    <th>Details</th>
 				  </tr>
+				  {% for rental in rentals %}
+				  {% if rental.before %}
 				  <tr>
-				    <td valign="top"><br><p style="padding-left:3px">Office Space In Raffles Place</p></td>
+				    <td valign="top"><br><p style="padding-left:3px">{{rental.property.Name}}</p></td>
 				    <td>By 
-				    	<img src="/static/images/janet.png" alt="Image" height="35"> Janet Tan<br>
-				    	Date: 2 April 2018<br>
-				    	Time: 12:00pm - 5:00pm<br>
-				    	Duration: 5 Hours<br></td>
+				    	<img src="/static/uploads/{{rental.finder.picture}}.png" alt="Image" height="35"> {{rental.finder.firstName}} {{rental.finder.lastName}}<br>
+				    	Date: {{rental.date}}<br>
+				    	Time: {{rental.timestart}}<br>
+				    	Duration: {{rental.Duration}} Hours<br></td>
 				  </tr>
+				  {% endif %}
+				  {% endfor %}
 				</table>
 			</div>
 		</div>

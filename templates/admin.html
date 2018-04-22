@@ -1,0 +1,291 @@
+<!DOCTYPE html>
+<html lang="zxx">
+  	<head>
+		<title>Ruumi Admin</title>
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+		<script type="application/x-javascript">
+		  addEventListener("load", function () {
+			setTimeout(hideURLbar, 0);
+		  }, false);
+
+		  function hideURLbar() {
+			window.scrollTo(0, 1);
+		  }
+		</script>
+		<!-- //custom-theme -->
+		<link href="/static/css/bootstrap.css" rel="stylesheet" type="text/css" media="all" />
+		<link rel="stylesheet" href="/static/css/shop.css" type="text/css" media="screen" property="" />
+		<link href="/static/css/style7.css" rel="stylesheet" type="text/css" media="all" />
+		<link rel="stylesheet" href="/static/css/flexslider.css" type="text/css" media="screen" />
+		<link href="/static/css/easy-responsive-tabs.css" rel='stylesheet' type='text/css' />
+		<!-- Owl-carousel-CSS -->
+		<link rel="stylesheet" type="text/css" href="/static/css/jquery-ui1.css">
+		<link href="/static/css/style.css" rel="stylesheet" type="text/css" media="all" />
+		<!-- font-awesome-icons -->
+		<link href="/static/css/font-awesome.css" rel="stylesheet">
+		<!-- //font-awesome-icons -->
+		<style type="text/css">
+		#customers {
+			font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
+			border-collapse: collapse;
+			width: 100%;
+		}
+		#customers td, #customers th {
+			border: 1px solid #ddd;
+			padding: 8px;
+		}
+		#customers tr:nth-child(even){background-color: #f2f2f2;}
+		#customers tr:hover {background-color: #ddd;}
+		#customers th {
+			padding-top: 12px;
+			padding-bottom: 12px;
+			text-align: left;
+			background-color: #b0c4de;
+			color: white;
+		}
+		/* The container <div> - needed to position the dropdown content */
+		#hoverli {
+		    position: relative;
+		    display: inline-block;
+		}
+
+		.actions_menu {
+		right: 0px;
+	    display: none;
+	    position: absolute;
+	    background-color: #f1f1f1;
+	    min-width: 120px;
+	    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+	    z-index: 1;
+		}
+		.actions_menu a {
+	    color: black;
+	    padding: 12px 16px;
+	    text-decoration: none;
+	    display: block;
+		}
+		/* Change color of dropdown links on hover */
+		.actions_menu a:hover {background-color: #ddd}
+
+		/* Show the dropdown menu on hover */
+		#hoverli:hover .actions_menu {
+		    display: block;
+		}
+		</style>
+
+  	</head>
+ 	<body>
+		<!-- banner -->
+		<div class="banner_top innerpage" id="home">
+            <!-- //search -->
+		  	<div class="clearfix"></div>
+		  	
+		  	<!-- banner_inner -->
+		 	<div class="services-breadcrumb_w3ls_agileinfo">
+				<div class="inner_breadcrumb_agileits_w3">
+				  	<ul class="short">
+						<li><a href="#">Admin</a></li>
+				  	</ul>
+				</div>
+		  	</div>
+		  	<!-- //banner_inner -->
+		</div>
+		<div class="ads-grid_shop">
+        	<div class="shop_inner_inf">
+	            <div class="privacy about">
+					<h3>Verification</h3>
+					<br>
+					<h3>Guests</h3>
+					<table id="customers">
+					 	<tr>
+						    <th>Details</th>
+						    <th>Verification Proof</th>
+						    <th>Verify</th>
+					  	</tr>
+					  		{% for guest in guests %}
+							{% if not guest.verified %}
+					  	<tr>
+					    <td valign="top"><br><p style="padding-left:30px"><b>{{guest.firstName}} {{guest.lastName}}</b><br>
+					    	{{guest.Email}}<br></td>
+					    <td><img src="/static/uploads/{{guest.verificationpic}}.png"></td>
+					    <td><a href="/verifyGuest/{{guest.ID}}">Verify</a></td>
+					  </tr>
+					  {% endif %}
+					  {% endfor %}
+					</table>
+					<br>
+					<h3>Hosts</h3>
+					<table id="customers">
+					 	<tr>
+						    <th>Details</th>
+						    <th>Verification Proof</th>
+						    <th>Verify</th>
+					  	</tr>
+					  		{% for host in hosts %}
+							{% if not host.verified %}
+					  	<tr>
+					    <td valign="top"><br><p style="padding-left:30px"><b>{{host.firstName}} {{host.lastName}}</b><br>
+					    	{{host.Email}}<br></td>
+					    <td><img src="/static/uploads/{{host.verificationpic}}.png"></td>
+					    <td><a href="/verifyHost/{{host.ID}}">Verify</a></td>
+					  </tr>
+					  {% endif %}
+					  {% endfor %}
+					</table>
+					<br>
+					<h3>Properties</h3>
+					<table id="customers">
+					 	<tr>
+						    <th>Details</th>
+						    <th>Verification Proof</th>
+						    <th>Verify</th>
+					  	</tr>
+					  		{% for properti in properties %}
+							{% if not properti.verified %}
+					  	<tr>
+					    <td valign="top"><br><p style="padding-left:30px"><b>{{properti.Name}}</b><br>
+					    	{{properti.Address}}<br></td>
+					    <td><img src="/static/uploads/{{properti.verificationpic}}.png" width="400px"></td>
+					    <td><a href="/verifyProperty/{{properti.propertyId}}">Verify</a></td>
+					  </tr>
+					  {% endif %}
+					  {% endfor %}
+					</table>
+
+
+				</div>
+			</div>
+		</div>
+<!-- footer -->
+	  	<div class="footer_agileinfo_w3">
+			<div class="footer_inner_info_w3ls_agileits">
+				<div class="col-md-3 footer-left">
+					<h2><a href="/">Ruumi</a></h2>
+					<p>Spaces for everyone.</p>
+					<ul class="social-nav model-3d-0 footer-social social two">
+						<li>
+							<a href="/static/#" class="facebook">
+								<div class="front"><i class="fa fa-facebook" aria-hidden="true"></i></div>
+								<div class="back"><i class="fa fa-facebook" aria-hidden="true"></i></div>
+							</a>
+						</li>
+						<li>
+							<a href="/static/#" class="twitter">
+								<div class="front"><i class="fa fa-twitter" aria-hidden="true"></i></div>
+								<div class="back"><i class="fa fa-twitter" aria-hidden="true"></i></div>
+							</a>
+						</li>
+						<li>
+							<a href="/static/#" class="instagram">
+								<div class="front"><i class="fa fa-instagram" aria-hidden="true"></i></div>
+								<div class="back"><i class="fa fa-instagram" aria-hidden="true"></i></div>
+							</a>
+						</li>
+						<li>
+							<a href="/static/#" class="pinterest">
+								<div class="front"><i class="fa fa-linkedin" aria-hidden="true"></i></div>
+								<div class="back"><i class="fa fa-linkedin" aria-hidden="true"></i></div>
+							</a>
+						</li>
+					</ul>
+				</div>
+				<div class="col-md-9 footer-right">
+					<div class="sign-grds">
+						<div class="col-md-4 sign-gd"></div>
+						<div class="col-md-5 sign-gd-two">
+							<h4>Contact</h4>
+							<div class="address">
+								<div class="address-grid">
+									<div class="address-left">
+										<i class="fa fa-phone" aria-hidden="true"></i>
+									</div>
+									<div class="address-right">
+										<h6>Phone Number</h6>
+										<p>+65 9123 5678</p>
+									</div>
+									<div class="clearfix"> </div>
+								</div>
+								<div class="address-grid">
+									<div class="address-left">
+										<i class="fa fa-envelope" aria-hidden="true"></i>
+									</div>
+									<div class="address-right">
+										<h6>Email Address</h6>
+										<p>Email :<a href="mailto:ruumi@live.com"> ruumi@live.com</a></p>
+									</div>
+									<div class="clearfix"> </div>
+								</div>
+							</div>		
+						</div>
+						<div class="col-md-3 sign-gd ">
+							<h4>Our <span>Information</span></h4>
+							<ul>
+								<li><a href="/">Home</a></li>
+								<li><a href="#">About</a></li>
+								<li><a href="#">Blog</a></li>
+								<li><a href="#">Press</a></li>
+								<li><a href="#">Guidelines</a></li>
+							</ul>       
+						</div>
+						<div class="clearfix"></div>
+					</div>
+				</div>
+				<div class="clearfix"></div>
+				<p class="copy-right-w3ls-agileits">&copy 2018 Ruumi.</p>
+			</div>
+		</div>
+		<!-- //footer -->
+		<a href="#home" id="toTop" class="scroll" style="display: block;"> <span id="toTopHover" style="opacity: 1;"> </span></a>
+		<script type="text/javascript" src="/static/js/jquery-2.1.4.min.js"></script>
+		<!-- FlexSlider -->
+		<script src="/static/js/jquery.flexslider.js"></script>
+		<script>
+			// Can also be used with $(document).ready()
+			$(window).load(function () {
+				$('.flexslider').flexslider({
+					animation: "slide",
+					controlNav: "thumbnails"
+				});
+			});
+		</script>
+		<!-- //FlexSlider-->
+		<script type="text/javascript">
+			jQuery(document).ready(function ($) {
+				$("#hoverli").hover(
+					function () {
+						$('#actions_menu').finish().slideDown('fast');
+					},
+					function () {
+						$('#actions_menu').finish().slideUp('fast');
+					}
+				);
+			});
+		</script>
+		<!--search-bar-->
+		<script src="/static/js/search.js"></script>
+		<!--//search-bar-->
+		<!-- start-smoth-scrolling -->
+		<script type="text/javascript" src="/static/js/move-top.js"></script>
+		<script type="text/javascript" src="/static/js/easing.js"></script>
+		<script type="text/javascript">
+			jQuery(document).ready(function ($) {
+				$(".scroll").click(function (event) {
+					event.preventDefault();
+					$('html,body').animate({
+						scrollTop: $(this.hash).offset().top
+					}, 1000);
+				});
+			});
+		</script>
+		<!-- //end-smoth-scrolling -->
+		<script type="text/javascript" src="/static/js/bootstrap-3.1.1.min.js"></script>
+		<!-- so that wont open in safari -->
+		<script type="text/javascript">
+		$("a").click(function (event) {
+		    event.preventDefault();
+		    window.location = $(this).attr("href");
+		});
+		</script>
+  	</body>
+</html>

@@ -90,7 +90,6 @@
 	      		},
 		      	defaultView: 'agendaWeek',
 		      	defaultDate: moment(),
-		      	// defaultDate: '2018-04-01',
 		      	navLinks: true, // can click day/week names to navigate views
 		      	editable: false,
 		      	eventLimit: true, // allow "more" link when too many events
@@ -105,159 +104,51 @@
 			          return moment( $(this).data('date') ).isBefore(moment(),'day') 
 			        }).addClass('fc-other-month');
 			    },  
-		     	events: [
-		     	// first day
-		        // {
-		        //   	title: 'All Day Event',
-		        //   	start: '2018-04-01T07:00:00',
-		        //   	end: '2018-04-01T22:00:00',
-		        //   	overlap: false,
-		        //   	// color: '#708090',
-		        // },
-		        // //second day
-		        // {	//available for rent
-		        // 	title: 'Rented by Janet Tan',
-		        //   	start: '2018-04-09T12:00:00',
-		        //   	end: '2018-04-09T17:00:00',
-		        //   	color: '#257e4a',
-		        // },
-		        //third day
-		        {
-		          	title: 'All Day Event',
-		          	start: '2018-04-10T07:00:00',
-		          	end: '2018-04-10T22:00:00',
-		          	overlap: false,
-		          	// color: '#708090',
-		        },
-		        // {	//available for rent
-		        //   	start: moment(),
-		        //   	end: '2018-04-11T22:00:00',
-		        //   	color: '#257e4a',
-		        //   	rendering: 'background',
-		        // },
-		        {	//rent it out
-		        	id: 1243,
-		        	title: 'Rent It Out',
-		          	start: '2018-04-11T07:00:00',
-		          	end: '2018-04-11T22:00:00',
-		          	color: '#ff8080',
-		          	resize: true,
-		          	editable: true,
-		        },
-		        {	//rent it out
-		        	title: 'Rent It Out',
-		          	start: '2018-04-12T07:00:00',
-		          	end: '2018-04-12T22:00:00',
-		          	color: '#ff8080',
-		          	resize: true,
-		          	editable: true,
-		        },
-		        //forth day
-		        // //fifth day
-		        // {	//robin rental
-		        //   	title: 'Rented by Robin Lee',
-		        //   	start: '2018-04-12T07:00:00',
-		        //   	end: '2018-04-12T12:00:00',
-		        //   	overlap: false,
-		        //   	color: "#257e4a",
-		        // },
-		        // {	//alok rental
-		        //   	title: 'Rented by Alok Singer',
-		        //   	start: '2018-04-12T15:30:00',
-		        //   	end: '2018-04-12T16:30:00',
-		        //   	overlap: false,
-		        //   	color: "#257e4a",
-		        // },
-		        // {	//available for rent
-		        //   	start: '2018-04-12T12:00:00',
-		        //   	end: '2018-04-12T22:00:00',
-		        //   	color: '#257e4a',
-		        //   	rendering: 'background',
-		        //   	editable: true,
-		        // },
-		        //sixth day
-		        {
-		          	title: 'Rent It Out',
-		          	start: '2018-04-13T07:00:00',
-		          	end: '2018-04-13T08:00:00',
-		          	color: '#ff8080',
-		          	editable: true
-		        },
-		        {
-		          	title: 'PaintStar Meeting',
-		          	start: '2018-04-13T08:00:00',
-		          	end: '2018-04-13T10:30:00',
-		          	overlap: false,
-		          	// color: '#708090',
-		        },
-		        {	
-		        	id: 124,
-		          	title: 'Rent It Out',
-		          	start: '2018-04-13T10:30:00',
-		          	end: '2018-04-13T17:00:00',
-		          	color: '#BE2625',
-		          	editable: true
-		        },
-		        {
-		          	title: 'Rent It Out',
-		          	start: '2018-04-13T17:00:00',
-		          	end: '2018-04-13T22:00:00',
-		          	color: '#ff8080',
-		          	editable: true
-		        },
-		        // last day
-		        {	//rent it out
-		        	title: 'Rent It Out',
-		          	start: '2018-04-14T07:00:00',
-		          	end: '2018-04-14T17:00:00',
-		          	color: '#ff8080',
-		          	resize: true,
-		          	editable: true,
-		        },
-		      //   {	//rent it out
-		      //   	id: 124,
-		      //   	title: 'Rent It Out',
-		      //     	start: '2018-04-07T09:00:00',
-		      //     	end: '2018-04-07T17:00:00',
-		      //     	color: '#BE2625',
-		      //     	resize: true,
-		      //     	editable: true,
-		      // //     	constraint: {
-		      // //     		start:'2018-04-07T07:00:00',
-        				
-    				// // }
-		      //   },
-		        {
-		          	title: 'Skype Conference Meeting',
-		          	start: '2018-04-14T17:00:00',
-		          	end: '2018-04-14T22:00:00',
-		          	overlap: false,
-		          	// color: '#708090',
-		        },
-		      	],
+		     	events: [],
 		      	eventClick: function(event, element) {
 		      		if (event.color == '#BE2625' || event.color == '#ff8080') { //available for rent
 		      			if (confirm('Make it available for rent?')) {
-			      			event.color = "#257e4a";
-			      			event.rendering = 'background';
-			      			$('#calendar').fullCalendar('updateEvent', event);
-			      			// document.getElementById("myForm").submit();
-			      			if (event.id == 1243 && (event.end.isBefore(moment.utc('2018-04-11T22:00:00')))) { //if it's the saturday event 
-				      			var event = {
-				      				id:125,
-				      				title: 'Rent It Out',
-				      				start:event.end,
-				      				end:'2018-04-11T22:00:00',
-				      				color:'#ff8080',
-				      				editable: true
-				      			};
-			      				$('#calendar').fullCalendar( 'renderEvent', event, true);
-			      			}
+			      			document.getElementById("datestart").value = event.start;
+			      			document.getElementById("dateend").value = event.end;
+			      			document.getElementById("myForm").submit();
 		      			}
 		      		}
 		    	}
 			});
 
+		});
+		</script>
+		<script type="text/javascript">
+		$(document).ready(function() {
+			{% for rental in rentals %}
+		 	var event = {
+		 		title: 'Rented by {{rental['finder']}}',
+		 		start: "{{rental['datestart']}}",
+		 		end: "{{rental['dateend']}}",
+		 		color: '#257e4a',
+		 	}
+		    $('#calendar').fullCalendar('renderEvent', event, true);
+		    {% endfor %}
+		    {% for l in listed %}
+		 	var event = {
+		 		title: 'Available for rental',
+		 		start: "{{l['datestart']}}",
+		 		end: "{{l['dateend']}}",
+		 		color: '#257e4a',
+		        rendering: 'background',
+		 	}
+		    $('#calendar').fullCalendar('renderEvent', event, true);
+		    {% endfor %}
+		    {% for a in Availabletimes %}
+		 	var event = {
+		 		title: 'Rent it out',
+		 		start: "{{a['datestart']}}",
+		 		end: "{{a['dateend']}}",
+		 		color: '#ff8080', //'#BE2625'
+		        editable: true,
+		 	}
+		    $('#calendar').fullCalendar('renderEvent', event, true);
+		    {% endfor %}
 		});
 		</script>
 		<script>
@@ -290,7 +181,7 @@
 						  		<a href="/myrentals/">My Rentals</a>
 								<a href="/dashboard/">Dashboard</a>
 								<a href="">Account Settings</a>
-								<a href="/">Log Out</a>
+								<a href="/logout">Log Out</a>
 						  	</div>
 						</div>
 			  		</div>
