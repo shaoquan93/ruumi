@@ -297,7 +297,7 @@ def calendar(propertyId):
 			# startListing = requests.get('http://127.0.0.1:3000/api/org.acme.ruumi.Listing/' + rental['listings'][0][32:]).json()
 			rental['propertyId'] = startListing['property'][33:]
 			rental['datestart'] = startListing['datestart']
-			duration = len(rental['listings']) * 0.5
+			duration = len(set(rental['listings'])) * 0.5
 			rental['dateend'] = (datetime.strptime(rental['datestart'][:-5], "%Y-%m-%dT%H:%M:%S") + timedelta(hours=duration)).strftime("%Y-%m-%dT%H:%M:%S")
 			finder = requests.get('http://127.0.0.1:3000/api/org.acme.ruumi.SpaceFinder/' + rental['finder'][36:]).json()
 			rental['finder'] = finder["firstName"] + " " + finder["lastName"]
@@ -342,23 +342,26 @@ def calendar(propertyId):
 
 @app.route('/addListing/', methods=['GET', 'POST'])
 def addListing():
-	start = datetime.strptime(request.form.get("datestart", "")[4:-9],'%b %d %Y %H:%M:%S')
-	end = datetime.strptime(request.form.get("dateend", "")[4:-9],'%b %d %Y %H:%M:%S')
-	propertyId = request.form.get("space", "")
-	properti = requests.get('http://127.0.0.1:3000/api/org.acme.ruumi.Property/' + propertyId).json()
-	curr  = start
-	while curr + timedelta(hours = 0.5) <= end:
-		json_val = {
-		  "$class": "org.acme.ruumi.Listing",
-		  "listingID": str(random_with_N_digits(4)),
-		  "price": properti['price'],
-		  "datestart": curr.strftime("%Y-%m-%dT%H:%M:%S"),
-		  "rented": "false",
-		  "property": "resource:org.acme.ruumi.Property#" + propertyId
-		}
-		r = requests.post('http://localhost:3000/api/org.acme.ruumi.Listing', data=json_val)
-		curr += timedelta(hours = 0.5)
-	return redirect("/calendar/" + propertyId)
+	if session.get('logged_in') and session['type'] == 'host':
+		start = datetime.strptime(request.form.get("datestart", "")[4:-9],'%b %d %Y %H:%M:%S')
+		end = datetime.strptime(request.form.get("dateend", "")[4:-9],'%b %d %Y %H:%M:%S')
+		propertyId = request.form.get("space", "")
+		properti = requests.get('http://127.0.0.1:3000/api/org.acme.ruumi.Property/' + propertyId).json()
+		curr  = start
+		while curr + timedelta(hours = 0.5) <= end:
+			json_val = {
+			  "$class": "org.acme.ruumi.Listing",
+			  "listingID": str(random_with_N_digits(4)),
+			  "price": properti['price'],
+			  "datestart": curr.strftime("%Y-%m-%dT%H:%M:%S"),
+			  "rented": "false",
+			  "property": "resource:org.acme.ruumi.Property#" + propertyId
+			}
+			r = requests.post('http://localhost:3000/api/org.acme.ruumi.Listing', data=json_val)
+			curr += timedelta(hours = 0.5)
+		return redirect("/calendar/" + propertyId)
+	else:
+		return redirect('/')
 
 @app.route('/myrentals/')
 def myrentals():
@@ -453,94 +456,108 @@ def space(propertyId):
 
 @app.route('/checkout/', methods=['GET', 'POST'])
 def checkout():
-	if request.method == 'POST':
-		space = request.form.get("space", "")
-		spacename = request.form.get("spacename", "")
-		datechoose = request.form.get("datechoose","") 
-		time1 = request.form.get("time1","")
-		time2 = request.form.get("time2","")
-	return render_template('checkout.html', space=space, spacename=spacename, datechoose=datechoose, time1=time1, time2=time2)
+	if session.get('logged_in') and session['type'] == 'guest':
+		if request.method == 'POST':
+			space = request.form.get("space", "")
+			spacename = request.form.get("spacename", "")
+			datechoose = request.form.get("datechoose","") 
+			time1 = request.form.get("time1","")
+			time2 = request.form.get("time2","")
+		return render_template('checkout.html', picture=session['picture'], space=space, spacename=spacename, datechoose=datechoose, time1=time1, time2=time2)
+	return redirect('/')
 
 
 @app.route('/done/', methods=['GET', 'POST'])
 def done():
-	if request.method == 'POST':
-		space = request.form.get("space", "")
-		spacename = request.form.get("spacename", "")
-		datechoose = request.form.get("datechoose","") 
-		time1 = request.form.get("time1","")
-		time2 = request.form.get("time2","")
+	if session.get('logged_in') and session['type'] == 'guest':
+		if request.method == 'POST':
+			space = request.form.get("space", "")
+			spacename = request.form.get("spacename", "")
+			datechoose = request.form.get("datechoose","") 
+			time1 = request.form.get("time1","")
+			time2 = request.form.get("time2","")
 
-		dateNew = datetime.strptime(datechoose, "%m/%d/%Y").strftime('%Y-%m-%d')
-		startTime = dateNew+"T"+time1+":00.000Z"
-		endTime = dateNew+"T"+time2+":00.000Z"
+			dateNew = datetime.strptime(datechoose, "%m/%d/%Y").strftime('%Y-%m-%d')
+			startTime = dateNew+"T"+time1+":00.000Z"
+			endTime = dateNew+"T"+time2+":00.000Z"
 
-		times = [startTime]
+			times = [startTime]
 
-		nowt = datetime.strptime(startTime, "%Y-%m-%dT%H:%M:%S.%fZ")
-		time_endTime = datetime.strptime(endTime, "%Y-%m-%dT%H:%M:%S.%fZ")
-		nowt += timedelta(minutes=30)
-		while nowt < time_endTime:
-			times.append(nowt.strftime("%Y-%m-%dT%H:%M:%S.000Z"))
+			nowt = datetime.strptime(startTime, "%Y-%m-%dT%H:%M:%S.%fZ")
+			time_endTime = datetime.strptime(endTime, "%Y-%m-%dT%H:%M:%S.%fZ")
 			nowt += timedelta(minutes=30)
+			while nowt < time_endTime:
+				times.append(nowt.strftime("%Y-%m-%dT%H:%M:%S.000Z"))
+				nowt += timedelta(minutes=30)
 
-		listings = requests.get('http://127.0.0.1:3000/api/org.acme.ruumi.Listing/').json()
-		chosens = [l['listingID'] for l in listings if (l['property'][33:] == space and l['datestart'] in times)]
+			listings = requests.get('http://127.0.0.1:3000/api/org.acme.ruumi.Listing/').json()
+			chosens = [l['listingID'] for l in listings if (l['property'][33:] == space and l['datestart'] in times)]
+			if len(chosens) == 1:
+				chosens.append(chosens[0])
 
-		rentalid =  str(random_with_N_digits(4))
+			rentalid =  str(random_with_N_digits(4))
 
-		json_val = {
-		  "$class": "org.acme.ruumi.rentListing",
-		  "spacefinder": "resource:org.acme.ruumi.SpaceFinder#" + session['ID'],
-		  "listings": chosens,
-		  "rentalid": rentalid,
-		}
+			json_val = {
+			  "$class": "org.acme.ruumi.rentListing",
+			  "spacefinder": "resource:org.acme.ruumi.SpaceFinder#" + session['ID'],
+			  "listings": chosens,
+			  "rentalid": rentalid,
+			}
 
-		r = requests.post('http://localhost:3000/api/org.acme.ruumi.rentListing', data=json_val)
-		# then update listing for all the times
-	# return jsonify(json_val)
-	return render_template('done.html', space=space, spacename=spacename, datechoose=datechoose, time1=time1, time2=time2)
+			r = requests.post('http://localhost:3000/api/org.acme.ruumi.rentListing', data=json_val)
+		return jsonify(json_val)
+		# return render_template('done.html', picture=session['picture'], space=space, spacename=spacename, datechoose=datechoose, time1=time1, time2=time2)
+	else:
+		return redirect('/')
 
 @app.route('/myaccount/')
 def myaccount():
-	rentals = requests.get('http://127.0.0.1:3000/api/org.acme.ruumi.Rental').json() 
-	for rental in rentals:
-		startListing = requests.get('http://127.0.0.1:3000/api/org.acme.ruumi.Listing/' + rental['listings'][0][32:]).json()
-		rental['datestart'] = startListing['datestart']
-		rental['duration'] = len(rental['listings'])*0.5
-		rental['property'] = requests.get('http://127.0.0.1:3000/api/org.acme.ruumi.Property/' + startListing['property'][33:]).json()
-		rental['past'] = datetime.strptime(startListing['datestart'], "%Y-%m-%dT%H:%M:%S.%fZ") < datetime.now()
+	if session.get('logged_in') and session['type'] == 'guest':
+		rentals = requests.get('http://127.0.0.1:3000/api/org.acme.ruumi.Rental').json() 
+		for rental in rentals:
+			startListing = requests.get('http://127.0.0.1:3000/api/org.acme.ruumi.Listing/' + rental['listings'][0][32:]).json()
+			rental['datestart'] = startListing['datestart']
+			rental['duration'] = len(set(rental['listings']))*0.5
+			rental['property'] = requests.get('http://127.0.0.1:3000/api/org.acme.ruumi.Property/' + startListing['property'][33:]).json()
+			rental['past'] = datetime.strptime(startListing['datestart'], "%Y-%m-%dT%H:%M:%S.%fZ") < datetime.now()
 
-	return render_template('guest_acc.html', rentals=rentals)
+		return render_template('guest_acc.html', picture=session['picture'], rentals=rentals)
+	else:
+		return redirect('/')
 
 @app.route('/submitReview/<rentalID>', methods=['GET', 'POST'])
 def submitReview(rentalID):
-	return render_template('review.html', rentalID = rentalID)
+	if session.get('logged_in') and session['type'] == 'guest':
+		return render_template('review.html', rentalID = rentalID, picture=session['picture'])
+	return redirect('/')
 
 @app.route('/addReview/<rentalID>', methods=['GET', 'POST'])
 def addReview(rentalID):
-	if request.method == "POST":
-		json_val = {
-		  "$class": "org.acme.ruumi.reviewRental",
-		  "rental": "resource:org.acme.ruumi.Rental#" + rentalID,
-		  "reviewsid": str(random_with_N_digits(4)),
-		  "review": request.form.get("review", ""),
-		  "wifi": "true",
-		  "electricity": "true",
-		  "aircon": "true",
-		  "enclosed": "true",
-		  "projector": "true",
-		  "whiteboard": "true",
-		  "fan": "true",
-		  "toilet": "true",
-		  "parking": "true",
-		  "pantry": "true",
-		  "Rating": 4,
-		  "chairs": 5,
-		  "tables": 5
-		}
-		r = requests.post('http://localhost:3000/api/org.acme.ruumi.reviewRental', data=json_val)
-	return redirect("/myaccount/")
+	if session.get('logged_in') and session['type'] == 'guest':
+		if request.method == "POST":
+			json_val = {
+			  "$class": "org.acme.ruumi.reviewRental",
+			  "rental": "resource:org.acme.ruumi.Rental#" + rentalID,
+			  "reviewsid": str(random_with_N_digits(4)),
+			  "review": request.form.get("review", ""),
+			  "wifi": "true",
+			  "electricity": "true",
+			  "aircon": "true",
+			  "enclosed": "true",
+			  "projector": "true",
+			  "whiteboard": "true",
+			  "fan": "true",
+			  "toilet": "true",
+			  "parking": "true",
+			  "pantry": "true",
+			  "Rating": 4,
+			  "chairs": 5,
+			  "tables": 5
+			}
+			r = requests.post('http://localhost:3000/api/org.acme.ruumi.reviewRental', data=json_val)
+		return redirect("/myaccount/")
+	else:
+		redirect('/')
 
 @app.route('/admin')
 def admin():
