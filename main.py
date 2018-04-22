@@ -126,7 +126,7 @@ def signingup():
 		  "picture": int(filename1[:-4])
 		}
 		r = requests.post('http://localhost:3000/api/org.acme.ruumi.SpaceFinder', data=json_val)
-   	return redirect('/')
+	return redirect('/')
 
 # ALL THE HOST SITES
 @app.route('/host/')
